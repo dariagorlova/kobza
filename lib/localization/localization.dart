@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kobza/localization/translations.i69n.dart';
+import 'package:kobza/localization/translations_uk.i69n.dart';
 
-const _supportedLocales = ['uk'];
+const _supportedLocales = ['en', 'uk'];
 
 class AppLocalizations {
   const AppLocalizations(this.translations);
@@ -9,11 +10,12 @@ class AppLocalizations {
   final Translations translations;
 
   static final _translations = <String, Translations Function()>{
-    'uk': () => const Translations(),
+    'en': () => const Translations(),
+    'uk': () => const Translations_uk(),
   };
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
-      _LocalizationsDelegate();
+      _AppLocalizationsDelegate();
 
   static final List<Locale> supportedLocales =
       _supportedLocales.map(Locale.new).toList();
@@ -26,8 +28,9 @@ class AppLocalizations {
           .translations;
 }
 
-class _LocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
-  const _LocalizationsDelegate();
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
 
   @override
   bool isSupported(Locale locale) =>

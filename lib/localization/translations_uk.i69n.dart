@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unused_field, camel_case_types, annotate_overrides, prefer_single_quotes
 // GENERATED FILE, do not edit!
 import 'package:i69n/i69n.dart' as i69n;
+import 'translations.i69n.dart';
 
-String get _languageCode => 'en';
-String get _localeName => 'en';
+String get _languageCode => 'uk';
+String get _localeName => 'uk';
 
 String _plural(int count,
         {String? zero,
@@ -33,16 +34,16 @@ String _cardinal(int count,
     i69n.cardinal(count, _languageCode,
         zero: zero, one: one, two: two, few: few, many: many, other: other);
 
-class Translations implements i69n.I69nMessageBundle {
-  const Translations();
-  String get mainPageTitle => "Kobza";
-  String get everyDayWordButtonTitle => "daily";
-  String get randomWordButtonTitle => "random";
-  String get letterK => "K";
-  String get letterO => "O";
-  String get letterB => "B";
-  String get letterZ => "Z";
-  String get letterA => "A";
+class Translations_uk extends Translations {
+  const Translations_uk();
+  String get mainPageTitle => "Кобза";
+  String get everyDayWordButtonTitle => "щодня";
+  String get randomWordButtonTitle => "абищо";
+  String get letterK => "К";
+  String get letterO => "О";
+  String get letterB => "Б";
+  String get letterZ => "З";
+  String get letterA => "А";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -67,7 +68,7 @@ class Translations implements i69n.I69nMessageBundle {
       case 'letterA':
         return letterA;
       default:
-        return key;
+        return super[key];
     }
   }
 }
