@@ -35,9 +35,14 @@ String _cardinal(int count,
 
 class Translations implements i69n.I69nMessageBundle {
   const Translations();
-  String get mainPageTitle => "Kobza";
-  String get everyDayButtonTitle => "EveryDay";
-  String get randomButtonTitle => "Random";
+  String get mainPageTitle => "Кобза";
+  String get everyDayWordButtonTitle => "щодня";
+  String get randomWordButtonTitle => "абищо";
+  String get letterK => "К";
+  String get letterO => "О";
+  String get letterB => "Б";
+  String get letterZ => "З";
+  String get letterA => "А";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -47,10 +52,20 @@ class Translations implements i69n.I69nMessageBundle {
     switch (key) {
       case 'mainPageTitle':
         return mainPageTitle;
-      case 'everyDayButtonTitle':
-        return everyDayButtonTitle;
-      case 'randomButtonTitle':
-        return randomButtonTitle;
+      case 'everyDayWordButtonTitle':
+        return everyDayWordButtonTitle;
+      case 'randomWordButtonTitle':
+        return randomWordButtonTitle;
+      case 'letterK':
+        return letterK;
+      case 'letterO':
+        return letterO;
+      case 'letterB':
+        return letterB;
+      case 'letterZ':
+        return letterZ;
+      case 'letterA':
+        return letterA;
       default:
         return key;
     }
