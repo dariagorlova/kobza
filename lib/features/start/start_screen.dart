@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kobza/di/injection.dart';
 import 'package:kobza/localization/localization.dart';
+import 'package:kobza/routes/app_router.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -8,6 +10,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context);
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -24,18 +27,33 @@ class StartScreen extends StatelessWidget {
           const SizedBox(
             height: 90,
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              t.everyDayWordButtonTitle,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              t.randomWordButtonTitle,
-              style: Theme.of(context).textTheme.headline6,
+          SizedBox(
+            width: 120,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // GameRoute
+                    getIt<AppRouter>().push(const GameRoute());
+                  },
+                  child: Text(
+                    t.everyDayWordButtonTitle,
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    t.randomWordButtonTitle,
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -45,9 +63,9 @@ class StartScreen extends StatelessWidget {
 }
 
 class ColoredBoxGreen extends StatelessWidget {
-  ColoredBoxGreen({required this.text, super.key});
+  const ColoredBoxGreen({required this.text, super.key});
 
-  String text;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +77,9 @@ class ColoredBoxGreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Text(
               text,
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline3!.copyWith(
+                    color: Colors.white,
+                  ),
             ),
           ),
         ),

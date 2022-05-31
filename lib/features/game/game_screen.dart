@@ -16,7 +16,8 @@ class GameScreen extends StatelessWidget {
             IconButton(
               alignment: Alignment.topRight,
               onPressed: () {},
-              icon: const Icon(Icons.close),
+              //icon: const Icon(Icons.close),
+              icon: const Icon(Icons.backspace_rounded),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
@@ -25,13 +26,13 @@ class GameScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('daily'),
+                    child: const Text('1'),
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('random'),
+                    child: const Text('2'),
                   ),
-                  const PinCodeVerificationScreen(),
+                  //const PinCodeVerificationScreen(),
                 ],
               ),
             ),
