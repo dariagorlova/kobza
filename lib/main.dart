@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:kobza/features/start/start_screen.dart';
+import 'package:get_it/get_it.dart';
+import 'package:kobza/di/injection.dart';
 import 'package:kobza/localization/localization.dart';
+import 'package:kobza/routes/app_router.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({
     super.key,
     this.locale,
@@ -16,14 +18,25 @@ class MyApp extends StatelessWidget {
   final Locale? locale;
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    configureInjection();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'AppLocalizations.of(context).mainPageTitle',
-      locale: locale,
+      locale: widget.locale,
       theme: ThemeData(
         primarySwatch: Colors.green,
         primaryColor: Colors.green,
-        backgroundColor: Colors.orangeAccent.shade100,
+        backgroundColor: const Color.fromARGB(255, 247, 220, 130),
         cardColor: Colors.white,
       ),
       localizationsDelegates: const [
@@ -32,7 +45,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const StartScreen(),
+      routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
+      routerDelegate: getIt<AppRouter>().delegate(),
+      //home: const StartScreen(),
       //home: const GameScreen(),
       //home: PinCodeVerificationScreen(),
     );
