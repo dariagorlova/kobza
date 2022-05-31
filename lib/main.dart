@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get_it/get_it.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/localization/localization.dart';
 import 'package:kobza/routes/app_router.dart';

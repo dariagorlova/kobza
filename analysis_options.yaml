@@ -11,6 +11,7 @@ include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
   exclude:
+    - lib/di/injection.config.dart
     - lib/localization/*.i69n.dart
     - test/*_test.dart
 
