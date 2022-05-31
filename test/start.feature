@@ -12,3 +12,4 @@ Feature: Start of application
     And I wait
     Then I don't see  {'daily'} text
     And I see {Icons.backspace_rounded} icon
+    And I see {'J'} text

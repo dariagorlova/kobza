@@ -27,6 +27,7 @@ void main() {
       await iWait(tester);
       await iDontSeeText(tester, 'daily');
       await iSeeIcon(tester, Icons.backspace_rounded);
+      await iSeeText(tester, 'J');
     });
   });
 }
