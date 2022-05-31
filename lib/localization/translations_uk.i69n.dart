@@ -39,11 +39,39 @@ class Translations_uk extends Translations {
   String get mainPageTitle => "Кобза";
   String get everyDayWordButtonTitle => "щодня";
   String get randomWordButtonTitle => "абищо";
+  String get letterJ => "Й";
+  String get letterC => "Ц";
+  String get letterU => "У";
   String get letterK => "К";
-  String get letterO => "О";
-  String get letterB => "Б";
+  String get letterE => "Е";
+  String get letterN => "Н";
+  String get letterG => "Г";
+  String get letterG2 => "Ґ";
+  String get letterSH => "Ш";
+  String get letterSHCH => "Щ";
   String get letterZ => "З";
+  String get letterH => "Х";
+  String get letterF => "Ф";
+  String get letterI => "І";
+  String get letterJI => "Ї";
+  String get letterV => "В";
   String get letterA => "А";
+  String get letterP => "П";
+  String get letterR => "Р";
+  String get letterO => "О";
+  String get letterL => "Л";
+  String get letterD => "Д";
+  String get letterZH => "Ж";
+  String get letterJE => "Є";
+  String get letterJA => "Я";
+  String get letterCH => "Ч";
+  String get letterS => "С";
+  String get letterM => "М";
+  String get letterY => "И";
+  String get letterT => "Т";
+  String get letterSoftSign => "Ь";
+  String get letterB => "Б";
+  String get letterJU => "Ю";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -57,16 +85,72 @@ class Translations_uk extends Translations {
         return everyDayWordButtonTitle;
       case 'randomWordButtonTitle':
         return randomWordButtonTitle;
+      case 'letterJ':
+        return letterJ;
+      case 'letterC':
+        return letterC;
+      case 'letterU':
+        return letterU;
       case 'letterK':
         return letterK;
-      case 'letterO':
-        return letterO;
-      case 'letterB':
-        return letterB;
+      case 'letterE':
+        return letterE;
+      case 'letterN':
+        return letterN;
+      case 'letterG':
+        return letterG;
+      case 'letterG2':
+        return letterG2;
+      case 'letterSH':
+        return letterSH;
+      case 'letterSHCH':
+        return letterSHCH;
       case 'letterZ':
         return letterZ;
+      case 'letterH':
+        return letterH;
+      case 'letterF':
+        return letterF;
+      case 'letterI':
+        return letterI;
+      case 'letterJI':
+        return letterJI;
+      case 'letterV':
+        return letterV;
       case 'letterA':
         return letterA;
+      case 'letterP':
+        return letterP;
+      case 'letterR':
+        return letterR;
+      case 'letterO':
+        return letterO;
+      case 'letterL':
+        return letterL;
+      case 'letterD':
+        return letterD;
+      case 'letterZH':
+        return letterZH;
+      case 'letterJE':
+        return letterJE;
+      case 'letterJA':
+        return letterJA;
+      case 'letterCH':
+        return letterCH;
+      case 'letterS':
+        return letterS;
+      case 'letterM':
+        return letterM;
+      case 'letterY':
+        return letterY;
+      case 'letterT':
+        return letterT;
+      case 'letterSoftSign':
+        return letterSoftSign;
+      case 'letterB':
+        return letterB;
+      case 'letterJU':
+        return letterJU;
       default:
         return super[key];
     }
