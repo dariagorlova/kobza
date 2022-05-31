@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter  
   i69n: ^2.1.0
+  pin_code_fields: ^7.4.0
 
 dev_dependencies:
   bdd_widget_test: ^1.3.0

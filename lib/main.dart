@@ -8,17 +8,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+    this.locale,
+  });
+
+  final Locale? locale;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppLocalizations.of(context).mainPageTitle,
-      //theme: ThemeData.dark(
+      title: 'AppLocalizations.of(context).mainPageTitle',
+      locale: locale,
       theme: ThemeData(
         primarySwatch: Colors.green,
         primaryColor: Colors.green,
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.orangeAccent.shade100,
         cardColor: Colors.white,
       ),
       localizationsDelegates: const [
@@ -28,6 +33,8 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       home: const StartScreen(),
+      //home: const GameScreen(),
+      //home: PinCodeVerificationScreen(),
     );
   }
 }

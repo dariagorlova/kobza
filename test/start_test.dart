@@ -18,14 +18,14 @@ void main() {
   group('''Start of application''', () {
     testWidgets('''As a User I want to see buttons with different options''', (tester) async {
       await bddSetUp(tester);
-      await iSeeText(tester, 'Щодня');
-      await iSeeText(tester, 'Абищо');
+      await iSeeText(tester, 'daily');
+      await iSeeText(tester, 'random');
     });
     testWidgets('''User tap button EveryDay''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'Щодня');
+      await iTapText(tester, 'daily');
       await iWait(tester);
-      await iDontSeeText(tester, 'Щодня');
+      await iDontSeeText(tester, 'daily');
       await iSeeIcon(tester, Icons.backspace_rounded);
     });
   });
