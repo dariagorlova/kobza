@@ -11,9 +11,9 @@ class OneAttempt extends StatefulWidget {
 }
 
 class _OneAttemptState extends State<OneAttempt> {
-  TextEditingController textEditingController = TextEditingController();
+  // TextEditingController textEditingController = TextEditingController();
 
-  String currentText = '';
+  // String currentText = '';
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -36,12 +36,12 @@ class _OneAttemptState extends State<OneAttempt> {
       ),
       cursorColor: Colors.black,
       animationDuration: const Duration(milliseconds: 300),
-      controller: textEditingController,
+      // controller: textEditingController,
       keyboardType: TextInputType.none,
       onChanged: (value) {
-        setState(() {
-          currentText = value;
-        });
+        // setState(() {
+        //   currentText = value;
+        // });
       },
     );
   }
