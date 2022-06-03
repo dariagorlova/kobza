@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.green,
         primaryColor: Colors.green,
-        backgroundColor: const Color.fromARGB(255, 247, 220, 130),
+        backgroundColor: const Color.fromARGB(255, 250, 243, 185),
         cardColor: Colors.white,
       ),
       localizationsDelegates: const [
@@ -46,9 +46,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
       routerDelegate: getIt<AppRouter>().delegate(),
-      //home: const StartScreen(),
-      //home: const GameScreen(),
-      //home: PinCodeVerificationScreen(),
     );
   }
 }
