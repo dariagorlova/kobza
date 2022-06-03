@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OneLetter {
   String get letter => throw _privateConstructorUsedError;
-  int get letterState => throw _privateConstructorUsedError;
+  LetterState get letterState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OneLetterCopyWith<OneLetter> get copyWith =>
@@ -28,7 +28,7 @@ mixin _$OneLetter {
 abstract class $OneLetterCopyWith<$Res> {
   factory $OneLetterCopyWith(OneLetter value, $Res Function(OneLetter) then) =
       _$OneLetterCopyWithImpl<$Res>;
-  $Res call({String letter, int letterState});
+  $Res call({String letter, LetterState letterState});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$OneLetterCopyWithImpl<$Res> implements $OneLetterCopyWith<$Res> {
       letterState: letterState == freezed
           ? _value.letterState
           : letterState // ignore: cast_nullable_to_non_nullable
-              as int,
+              as LetterState,
     ));
   }
 }
@@ -63,7 +63,7 @@ abstract class _$$_OneLetterCopyWith<$Res> implements $OneLetterCopyWith<$Res> {
           _$_OneLetter value, $Res Function(_$_OneLetter) then) =
       __$$_OneLetterCopyWithImpl<$Res>;
   @override
-  $Res call({String letter, int letterState});
+  $Res call({String letter, LetterState letterState});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$_OneLetterCopyWithImpl<$Res> extends _$OneLetterCopyWithImpl<$Res>
       letterState: letterState == freezed
           ? _value.letterState
           : letterState // ignore: cast_nullable_to_non_nullable
-              as int,
+              as LetterState,
     ));
   }
 }
@@ -102,7 +102,7 @@ class _$_OneLetter implements _OneLetter {
   @override
   final String letter;
   @override
-  final int letterState;
+  final LetterState letterState;
 
   @override
   String toString() {
@@ -134,12 +134,12 @@ class _$_OneLetter implements _OneLetter {
 abstract class _OneLetter implements OneLetter {
   const factory _OneLetter(
       {required final String letter,
-      required final int letterState}) = _$_OneLetter;
+      required final LetterState letterState}) = _$_OneLetter;
 
   @override
   String get letter => throw _privateConstructorUsedError;
   @override
-  int get letterState => throw _privateConstructorUsedError;
+  LetterState get letterState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_OneLetterCopyWith<_$_OneLetter> get copyWith =>

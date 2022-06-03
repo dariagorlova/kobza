@@ -2,10 +2,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'one_letter.freezed.dart';
 
+enum LetterState { initial, almostCorrectly, correctly, wrong }
+
 @freezed
 class OneLetter with _$OneLetter {
   const factory OneLetter({
     required String letter,
-    required int letterState, // 0-initial,1-almostCorrectly,2-correctly,3-wrong
+    required LetterState letterState,
   }) = _OneLetter;
 }
