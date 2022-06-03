@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kobza/core/model/one_letter.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/routes/app_router.dart';
 
@@ -23,8 +24,61 @@ class GameCubit extends Cubit<GameState> {
 
   final AppRouter _router;
 
+  void letterPressed(String letter) {
+    var letterReplaced = false;
+    // var currentState = LetterState.initial;
+
+    final newAnswers = state.answers
+        .map(
+          (line) => line.map(
+            (l) {
+              if (l.letter.isEmpty && !letterReplaced) {
+                letterReplaced = true;
+                // currentState = validateLetter(letter);
+                return l.copyWith(
+                  letter: letter,
+                  // letterState: currentState,
+                );
+              }
+              return l;
+            },
+          ).toList(),
+        )
+        .toList();
+
+    // final newKeyboard = state.keyboard
+    //     .map(
+    //       (line) => line
+    //           .map(
+    //             (l) => l.letter == letter
+    //                 ? l.copyWith(letterState: currentState)
+    //                 : l,
+    //           )
+    //           .toList(),
+    //     )
+    //     .toList();
+
+    emit(
+      state.copyWith(
+        answers: newAnswers,
+        // keyboard: newKeyboard,
+      ),
+    );
+  }
+
+  LetterState validateLetter(String letter) {
+    return LetterState.correctly;
+  }
+
   void startGame() {
     //
+  }
+
+  void addAndAnalyzeNewAttempt(String newWord) {
+    var list = newWord.split('');
+    final map = list.map(
+      (i) => OneLetter(letter: i, letterState: LetterState.initial),
+    );
   }
 
   void endGame() {
