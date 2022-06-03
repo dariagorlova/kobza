@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/features/game/cubit/game_cubit.dart';
+import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/features/game/screen/widgets/one_attempt.dart';
 import 'package:kobza/features/game/screen/widgets/virtual_keyboard.dart';
 
@@ -54,16 +55,19 @@ class GameField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 50, right: 50),
-      child: Column(
-        children: const [
-          OneAttempt(),
-          OneAttempt(),
-          OneAttempt(),
-          OneAttempt(),
-          OneAttempt(),
-          OneAttempt(),
-        ],
-      ),
+      child: BlocSelector<GameCubit, GameState, Keyboard>(
+          selector: (state) => state.answers,
+          builder: (context, words) {
+            return Column(
+              children: words
+                  .map(
+                    (word) => OneAttempt(
+                      word: word,
+                    ),
+                  )
+                  .toList(),
+            );
+          }),
     );
   }
 }
