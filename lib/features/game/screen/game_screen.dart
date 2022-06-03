@@ -56,18 +56,19 @@ class GameField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 50, right: 50),
       child: BlocSelector<GameCubit, GameState, Keyboard>(
-          selector: (state) => state.answers,
-          builder: (context, words) {
-            return Column(
-              children: words
-                  .map(
-                    (word) => OneAttempt(
-                      word: word,
-                    ),
-                  )
-                  .toList(),
-            );
-          }),
+        selector: (state) => state.answers,
+        builder: (context, words) {
+          return Column(
+            children: words
+                .map(
+                  (word) => OneAttempt(
+                    word: word,
+                  ),
+                )
+                .toList(),
+          );
+        },
+      ),
     );
   }
 }

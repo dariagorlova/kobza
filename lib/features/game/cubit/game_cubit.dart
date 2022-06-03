@@ -75,10 +75,9 @@ class GameCubit extends Cubit<GameState> {
   }
 
   void addAndAnalyzeNewAttempt(String newWord) {
-    var list = newWord.split('');
-    final map = list.map(
-      (i) => OneLetter(letter: i, letterState: LetterState.initial),
-    );
+    newWord.split('').map(
+          (i) => OneLetter(letter: i, letterState: LetterState.initial),
+        );
   }
 
   void endGame() {
