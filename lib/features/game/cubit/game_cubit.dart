@@ -12,72 +12,100 @@ class GameCubit extends Cubit<GameState> {
           GameState(
             hiddenWord: 'КОБЗА',
             answers: defaultAnswers,
-            keyboard: createKeyboard(
-              [
-                ['Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ґ', 'Ш', 'Щ', 'З', 'Х'],
-                ['Ф', 'І', 'Ї', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Є'],
-                ['<', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '>'],
-              ],
-            ),
+            keyboard: [
+              ['Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ґ', 'Ш', 'Щ', 'З', 'Х'],
+              ['Ф', 'І', 'Ї', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Є'],
+              ['<', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '>'],
+            ],
           ),
         );
 
   final AppRouter _router;
 
   void letterPressed(String letter) {
-    var letterReplaced = false;
-    // var currentState = LetterState.initial;
+    if (state.attempt >= state.answers.length) {
+      return;
+    }
 
-    final newAnswers = state.answers
+    switch (letter) {
+      case '>':
+        addAndAnalyzeNewAttempt();
+        return;
+      case '<':
+        deleteLastLetter();
+        return;
+      default:
+        addLetter(letter);
+    }
+  }
+
+  void addLetter(String letter) {
+    if (state.currentWordIsFull) {
+      return;
+    }
+    final word = state.currentWord;
+    final position = word.indexWhere((letter) => letter.letter.isEmpty);
+    word[position] = OneLetter(letter: letter);
+
+    final answers = [...state.answers];
+    answers[state.attempt] = word;
+    emit(state.copyWith(answers: answers));
+  }
+
+  void deleteLastLetter() {
+    if (!state.canDelete) {
+      return;
+    }
+    final word = state.currentWord;
+    final toDeleteIndex = word.lastIndexWhere(
+      (letter) => letter.letter.isNotEmpty,
+    );
+    word[toDeleteIndex] = const OneLetter();
+    final answers = [...state.answers];
+    answers[state.attempt] = word;
+
+    emit(state.copyWith(answers: answers));
+  }
+
+  void markAnsweredLetters() {
+    final answers = state.answers
         .map(
-          (line) => line.map(
-            (l) {
-              if (l.letter.isEmpty && !letterReplaced) {
-                letterReplaced = true;
-                // currentState = validateLetter(letter);
-                return l.copyWith(
-                  letter: letter,
-                  // letterState: currentState,
-                );
-              }
-              return l;
-            },
-          ).toList(),
+          (word) => word
+              .asMap()
+              .map(
+                (index, letter) => MapEntry(
+                  index,
+                  letter.copyWith(
+                    letterState: _getLetterState(index, letter.letter),
+                  ),
+                ),
+              )
+              .values
+              .toList(),
         )
         .toList();
-
-    // final newKeyboard = state.keyboard
-    //     .map(
-    //       (line) => line
-    //           .map(
-    //             (l) => l.letter == letter
-    //                 ? l.copyWith(letterState: currentState)
-    //                 : l,
-    //           )
-    //           .toList(),
-    //     )
-    //     .toList();
-
-    emit(
-      state.copyWith(
-        answers: newAnswers,
-        // keyboard: newKeyboard,
-      ),
-    );
+    emit(state.copyWith(answers: answers));
   }
 
-  LetterState validateLetter(String letter) {
-    return LetterState.correctly;
+  LetterState _getLetterState(int index, String letter) {
+    if (letter.isEmpty) {
+      return LetterState.initial;
+    }
+    if (state.hiddenWord[index] == letter) {
+      return LetterState.correctly;
+    }
+    if (state.hiddenWord.contains(letter)) {
+      return LetterState.almostCorrectly;
+    }
+    return LetterState.wrong;
   }
 
-  void startGame() {
-    //
-  }
-
-  void addAndAnalyzeNewAttempt(String newWord) {
-    newWord.split('').map(
-          (i) => OneLetter(letter: i, letterState: LetterState.initial),
-        );
+  void addAndAnalyzeNewAttempt() {
+    if (!state.currentWordIsFull) {
+      return;
+    }
+    emit(state.copyWith(attempt: state.attempt + 1));
+    markAnsweredLetters();
   }
 
   void endGame() {
