@@ -97,11 +97,14 @@ class __$$_OneLetterCopyWithImpl<$Res> extends _$OneLetterCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OneLetter implements _OneLetter {
-  const _$_OneLetter({required this.letter, required this.letterState});
+  const _$_OneLetter(
+      {this.letter = '', this.letterState = LetterState.initial});
 
   @override
+  @JsonKey()
   final String letter;
   @override
+  @JsonKey()
   final LetterState letterState;
 
   @override
@@ -133,8 +136,7 @@ class _$_OneLetter implements _OneLetter {
 
 abstract class _OneLetter implements OneLetter {
   const factory _OneLetter(
-      {required final String letter,
-      required final LetterState letterState}) = _$_OneLetter;
+      {final String letter, final LetterState letterState}) = _$_OneLetter;
 
   @override
   String get letter => throw _privateConstructorUsedError;
