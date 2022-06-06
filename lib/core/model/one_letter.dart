@@ -7,7 +7,7 @@ enum LetterState { initial, almostCorrectly, correctly, wrong }
 @freezed
 class OneLetter with _$OneLetter {
   const factory OneLetter({
-    required String letter,
-    required LetterState letterState,
+    @Default('') String letter,
+    @Default(LetterState.initial) LetterState letterState,
   }) = _OneLetter;
 }

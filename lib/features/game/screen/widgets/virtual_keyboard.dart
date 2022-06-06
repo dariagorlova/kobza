@@ -9,19 +9,14 @@ class VirtualKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final t = AppLocalizations.of(context);
-    return BlocSelector<GameCubit, GameState, Keyboard>(
+    return BlocSelector<GameCubit, GameState, List<List<String>>>(
       selector: (state) => state.keyboard,
       builder: (context, keyboard) => Column(
         children: keyboard
             .map(
               (line) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: line
-                    .map(
-                      (c) => LetterKey(letter: c),
-                    )
-                    .toList(),
+                children: line.map((c) => LetterKey(letter: c)).toList(),
               ),
             )
             .toList(),

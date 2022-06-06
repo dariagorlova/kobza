@@ -36,6 +36,10 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.green,
         primaryColor: Colors.green,
         backgroundColor: const Color.fromARGB(255, 250, 243, 185),
+        canvasColor: const Color.fromARGB(255, 219, 218, 218),
+        errorColor: Colors.grey,
+        splashColor: Colors.orange,
+        focusColor: Colors.green,
         cardColor: Colors.white,
       ),
       localizationsDelegates: const [

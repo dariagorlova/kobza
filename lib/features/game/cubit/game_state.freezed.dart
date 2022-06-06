@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameState {
   String get hiddenWord => throw _privateConstructorUsedError;
   List<List<OneLetter>> get answers => throw _privateConstructorUsedError;
-  List<List<OneLetter>> get keyboard => throw _privateConstructorUsedError;
+  List<List<String>> get keyboard => throw _privateConstructorUsedError;
+  int get attempt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameStateCopyWith<GameState> get copyWith =>
@@ -32,7 +33,8 @@ abstract class $GameStateCopyWith<$Res> {
   $Res call(
       {String hiddenWord,
       List<List<OneLetter>> answers,
-      List<List<OneLetter>> keyboard});
+      List<List<String>> keyboard,
+      int attempt});
 }
 
 /// @nodoc
@@ -48,6 +50,7 @@ class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
     Object? hiddenWord = freezed,
     Object? answers = freezed,
     Object? keyboard = freezed,
+    Object? attempt = freezed,
   }) {
     return _then(_value.copyWith(
       hiddenWord: hiddenWord == freezed
@@ -61,7 +64,11 @@ class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
       keyboard: keyboard == freezed
           ? _value.keyboard
           : keyboard // ignore: cast_nullable_to_non_nullable
-              as List<List<OneLetter>>,
+              as List<List<String>>,
+      attempt: attempt == freezed
+          ? _value.attempt
+          : attempt // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -75,7 +82,8 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
   $Res call(
       {String hiddenWord,
       List<List<OneLetter>> answers,
-      List<List<OneLetter>> keyboard});
+      List<List<String>> keyboard,
+      int attempt});
 }
 
 /// @nodoc
@@ -93,6 +101,7 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
     Object? hiddenWord = freezed,
     Object? answers = freezed,
     Object? keyboard = freezed,
+    Object? attempt = freezed,
   }) {
     return _then(_$_GameState(
       hiddenWord: hiddenWord == freezed
@@ -106,7 +115,11 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
       keyboard: keyboard == freezed
           ? _value._keyboard
           : keyboard // ignore: cast_nullable_to_non_nullable
-              as List<List<OneLetter>>,
+              as List<List<String>>,
+      attempt: attempt == freezed
+          ? _value.attempt
+          : attempt // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -117,7 +130,8 @@ class _$_GameState implements _GameState {
   const _$_GameState(
       {required this.hiddenWord,
       required final List<List<OneLetter>> answers,
-      required final List<List<OneLetter>> keyboard})
+      required final List<List<String>> keyboard,
+      this.attempt = 0})
       : _answers = answers,
         _keyboard = keyboard;
 
@@ -130,16 +144,20 @@ class _$_GameState implements _GameState {
     return EqualUnmodifiableListView(_answers);
   }
 
-  final List<List<OneLetter>> _keyboard;
+  final List<List<String>> _keyboard;
   @override
-  List<List<OneLetter>> get keyboard {
+  List<List<String>> get keyboard {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_keyboard);
   }
 
   @override
+  @JsonKey()
+  final int attempt;
+
+  @override
   String toString() {
-    return 'GameState(hiddenWord: $hiddenWord, answers: $answers, keyboard: $keyboard)';
+    return 'GameState(hiddenWord: $hiddenWord, answers: $answers, keyboard: $keyboard, attempt: $attempt)';
   }
 
   @override
@@ -150,7 +168,8 @@ class _$_GameState implements _GameState {
             const DeepCollectionEquality()
                 .equals(other.hiddenWord, hiddenWord) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
-            const DeepCollectionEquality().equals(other._keyboard, _keyboard));
+            const DeepCollectionEquality().equals(other._keyboard, _keyboard) &&
+            const DeepCollectionEquality().equals(other.attempt, attempt));
   }
 
   @override
@@ -158,7 +177,8 @@ class _$_GameState implements _GameState {
       runtimeType,
       const DeepCollectionEquality().hash(hiddenWord),
       const DeepCollectionEquality().hash(_answers),
-      const DeepCollectionEquality().hash(_keyboard));
+      const DeepCollectionEquality().hash(_keyboard),
+      const DeepCollectionEquality().hash(attempt));
 
   @JsonKey(ignore: true)
   @override
@@ -170,14 +190,17 @@ abstract class _GameState implements GameState {
   const factory _GameState(
       {required final String hiddenWord,
       required final List<List<OneLetter>> answers,
-      required final List<List<OneLetter>> keyboard}) = _$_GameState;
+      required final List<List<String>> keyboard,
+      final int attempt}) = _$_GameState;
 
   @override
   String get hiddenWord => throw _privateConstructorUsedError;
   @override
   List<List<OneLetter>> get answers => throw _privateConstructorUsedError;
   @override
-  List<List<OneLetter>> get keyboard => throw _privateConstructorUsedError;
+  List<List<String>> get keyboard => throw _privateConstructorUsedError;
+  @override
+  int get attempt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GameStateCopyWith<_$_GameState> get copyWith =>
