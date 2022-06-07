@@ -13,4 +13,9 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     ),
   );
   await tester.pumpAndSettle();
+
+  di.getIt
+    ..allowReassignment = true
+    ..registerFactory<int>(() => 0, instanceName: 'seed')
+    ..allowReassignment = false;
 }

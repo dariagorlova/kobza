@@ -9,9 +9,6 @@ import './step/i_see_text.dart';
 import './step/i_tap_text.dart';
 import './step/i_wait_second.dart';
 import './step/i_see_icon.dart';
-import './step/i_see_text_times.dart';
-import './step/i_enter_word.dart';
-import './step/i_see_coloredbox_with_color.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -28,22 +25,6 @@ void main() {
       await iTapText(tester, 'daily');
       await iWaitSecond(tester, 1);
       await iSeeIcon(tester, Icons.close);
-    });
-    testWidgets('''User tap K key''', (tester) async {
-      await bddSetUp(tester);
-      await iTapText(tester, 'daily');
-      await iWaitSecond(tester, 1);
-      await iSeeText(tester, 'К');
-      await iTapText(tester, 'К');
-      await iSeeTextTimes(tester, 'К', 2);
-    });
-    testWidgets('''User guessed the letter K''', (tester) async {
-      await bddSetUp(tester);
-      await iTapText(tester, 'daily');
-      await iWaitSecond(tester, 1);
-      await iEnterWord(tester, ['К', 'О', 'Л', 'І', 'Р']);
-      await iTapText(tester, '>');
-      await iSeeColoredboxWithColor(tester, Colors.green);
     });
   });
 }
