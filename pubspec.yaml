@@ -31,6 +31,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.0.2
   injectable_generator: ^1.5.3
+  mocktail: ^0.3.0
   very_good_analysis: ^3.0.0
 
 # The following section is specific to Flutter packages.

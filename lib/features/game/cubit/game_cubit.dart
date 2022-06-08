@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kobza/core/model/one_letter.dart';
+import 'package:kobza/core/service/current_word_repository.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/routes/app_router.dart';
 
@@ -8,9 +9,10 @@ import 'package:kobza/routes/app_router.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit(
     this._router,
+    CurrentWordRepository _currentWordRepository,
   ) : super(
           GameState(
-            hiddenWord: 'КОБЗА',
+            hiddenWord: _currentWordRepository.getCurrentWord(),
             answers: defaultAnswers,
             keyboard: [
               ['Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ґ', 'Ш', 'Щ', 'З', 'Х'],
@@ -21,6 +23,7 @@ class GameCubit extends Cubit<GameState> {
         );
 
   final AppRouter _router;
+  //final CurrentWordRepository _currentWordRepository;
 
   void letterPressed(String letter) {
     if (state.attempt >= state.answers.length) {

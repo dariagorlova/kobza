@@ -5,6 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kobza/di/injection.dart' as di;
 import 'package:kobza/main.dart';
 
+import '../util/mock_words_repository.dart';
+
 Future<void> theAppIsRunning(WidgetTester tester) async {
   await di.getIt.reset();
   await tester.pumpWidget(
@@ -13,4 +15,10 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     ),
   );
   await tester.pumpAndSettle();
+
+  di.getIt
+    ..allowReassignment = true
+    ..registerFactory<int>(() => 0, instanceName: 'seed')
+    ..registerSingleton(getWordsRepository())
+    ..allowReassignment = false;
 }

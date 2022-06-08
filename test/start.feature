@@ -10,7 +10,5 @@ Feature: Start of application
   Scenario: User tap button EveryDay
     And I tap {'daily'} text
     And I wait {1} second
-    # Then I don't see  {'daily'} text
-    #And I see {Icons.backspace_rounded} icon
-    #And I see {'J'} text
     Then I see {Icons.close} icon
+    
