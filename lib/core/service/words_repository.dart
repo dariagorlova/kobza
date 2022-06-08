@@ -9,7 +9,6 @@ class WordsRepository {
     'СОНЦЕ',
     'ЖІНКА',
     'ЖУЙКА',
-    'ЖУЙКА',
   ];
 
   List<String> getAllWords() => _words;
