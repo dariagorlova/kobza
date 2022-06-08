@@ -22,18 +22,40 @@ class LetterKey extends StatelessWidget {
               onTap: () {
                 context.read<GameCubit>().letterPressed(letter);
               },
-              child: SizedBox(
-                height: 35,
-                width: 24,
-                child: Text(
-                  letter,
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              enableFeedback: context.read<GameCubit>().getEnable(letter),
+              child: LetterSizedBox(letter: letter),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class LetterSizedBox extends StatelessWidget {
+  const LetterSizedBox({
+    super.key,
+    required this.letter,
+  });
+
+  final String letter;
+
+  @override
+  Widget build(BuildContext context) {
+    if (letter == '<') {
+      return const SizedBox(
+        child: Icon(Icons.backspace_outlined),
+      );
+    } else if (letter == '>') {
+      return const SizedBox(child: Icon(Icons.keyboard_return));
+    }
+    return SizedBox(
+      height: 35,
+      width: 24,
+      child: Text(
+        letter,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
