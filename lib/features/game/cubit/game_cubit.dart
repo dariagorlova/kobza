@@ -9,7 +9,8 @@ import 'package:kobza/routes/app_router.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit(
     this._router,
-    CurrentWordRepository _currentWordRepository,
+    //CurrentWordRepository _currentWordRepository,
+    this._currentWordRepository,
   ) : super(
           GameState(
             hiddenWord: _currentWordRepository.getCurrentWord(),
@@ -23,7 +24,7 @@ class GameCubit extends Cubit<GameState> {
         );
 
   final AppRouter _router;
-  //final CurrentWordRepository _currentWordRepository;
+  final CurrentWordRepository _currentWordRepository;
 
   void letterPressed(String letter) {
     if (state.attempt >= state.answers.length) {
@@ -107,11 +108,39 @@ class GameCubit extends Cubit<GameState> {
     if (!state.currentWordIsFull) {
       return;
     }
+
+    // final wordAsStr = StringBuffer();
+    // state.currentWord.map(
+    //   (e) => wordAsStr.write(e.letter),
+    // );
+    final wordAsStr = StringBuffer();
+    for (var i = 0; i < state.currentWord.length; i++) {
+      wordAsStr.write(state.currentWord[i].letter);
+    }
+
+    if (!_currentWordRepository.isWordInRepository(wordAsStr.toString())) {
+      return;
+    }
+
     emit(state.copyWith(attempt: state.attempt + 1));
     markAnsweredLetters();
   }
 
   void endGame() {
     _router.pop();
+  }
+
+  bool getEnable(String letter) {
+    if (letter == '<' || letter == '>') {
+      if (!state.currentWordIsFull && letter == '>') {
+        return false;
+      } else {
+        if (!state.canDelete && letter == '<') {
+          return false;
+        }
+        return true;
+      }
+    }
+    return true;
   }
 }

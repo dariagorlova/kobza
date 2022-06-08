@@ -20,6 +20,10 @@ class CurrentWordRepository {
     return list.elementAt(index);
   }
 
+  bool isWordInRepository(String word) {
+    return allWords.getAllWords().contains(word);
+  }
+
   String getCurrentWord() {
     return getRandomWord();
     //if (word.word == '') word = const CurrentWord(word: 'КОБЗА');
