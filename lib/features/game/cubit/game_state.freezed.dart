@@ -20,6 +20,9 @@ mixin _$GameState {
   List<List<OneLetter>> get answers => throw _privateConstructorUsedError;
   List<List<String>> get keyboard => throw _privateConstructorUsedError;
   int get attempt => throw _privateConstructorUsedError;
+  bool get playerWon => throw _privateConstructorUsedError;
+  bool get playerLost => throw _privateConstructorUsedError;
+  bool get wrongWordDialog => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameStateCopyWith<GameState> get copyWith =>
@@ -34,7 +37,10 @@ abstract class $GameStateCopyWith<$Res> {
       {String hiddenWord,
       List<List<OneLetter>> answers,
       List<List<String>> keyboard,
-      int attempt});
+      int attempt,
+      bool playerWon,
+      bool playerLost,
+      bool wrongWordDialog});
 }
 
 /// @nodoc
@@ -51,6 +57,9 @@ class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
     Object? answers = freezed,
     Object? keyboard = freezed,
     Object? attempt = freezed,
+    Object? playerWon = freezed,
+    Object? playerLost = freezed,
+    Object? wrongWordDialog = freezed,
   }) {
     return _then(_value.copyWith(
       hiddenWord: hiddenWord == freezed
@@ -69,6 +78,18 @@ class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
           ? _value.attempt
           : attempt // ignore: cast_nullable_to_non_nullable
               as int,
+      playerWon: playerWon == freezed
+          ? _value.playerWon
+          : playerWon // ignore: cast_nullable_to_non_nullable
+              as bool,
+      playerLost: playerLost == freezed
+          ? _value.playerLost
+          : playerLost // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wrongWordDialog: wrongWordDialog == freezed
+          ? _value.wrongWordDialog
+          : wrongWordDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -83,7 +104,10 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
       {String hiddenWord,
       List<List<OneLetter>> answers,
       List<List<String>> keyboard,
-      int attempt});
+      int attempt,
+      bool playerWon,
+      bool playerLost,
+      bool wrongWordDialog});
 }
 
 /// @nodoc
@@ -102,6 +126,9 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
     Object? answers = freezed,
     Object? keyboard = freezed,
     Object? attempt = freezed,
+    Object? playerWon = freezed,
+    Object? playerLost = freezed,
+    Object? wrongWordDialog = freezed,
   }) {
     return _then(_$_GameState(
       hiddenWord: hiddenWord == freezed
@@ -120,6 +147,18 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
           ? _value.attempt
           : attempt // ignore: cast_nullable_to_non_nullable
               as int,
+      playerWon: playerWon == freezed
+          ? _value.playerWon
+          : playerWon // ignore: cast_nullable_to_non_nullable
+              as bool,
+      playerLost: playerLost == freezed
+          ? _value.playerLost
+          : playerLost // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wrongWordDialog: wrongWordDialog == freezed
+          ? _value.wrongWordDialog
+          : wrongWordDialog // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -131,7 +170,10 @@ class _$_GameState implements _GameState {
       {required this.hiddenWord,
       required final List<List<OneLetter>> answers,
       required final List<List<String>> keyboard,
-      this.attempt = 0})
+      this.attempt = 0,
+      this.playerWon = false,
+      this.playerLost = false,
+      this.wrongWordDialog = false})
       : _answers = answers,
         _keyboard = keyboard;
 
@@ -154,10 +196,19 @@ class _$_GameState implements _GameState {
   @override
   @JsonKey()
   final int attempt;
+  @override
+  @JsonKey()
+  final bool playerWon;
+  @override
+  @JsonKey()
+  final bool playerLost;
+  @override
+  @JsonKey()
+  final bool wrongWordDialog;
 
   @override
   String toString() {
-    return 'GameState(hiddenWord: $hiddenWord, answers: $answers, keyboard: $keyboard, attempt: $attempt)';
+    return 'GameState(hiddenWord: $hiddenWord, answers: $answers, keyboard: $keyboard, attempt: $attempt, playerWon: $playerWon, playerLost: $playerLost, wrongWordDialog: $wrongWordDialog)';
   }
 
   @override
@@ -169,7 +220,12 @@ class _$_GameState implements _GameState {
                 .equals(other.hiddenWord, hiddenWord) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
             const DeepCollectionEquality().equals(other._keyboard, _keyboard) &&
-            const DeepCollectionEquality().equals(other.attempt, attempt));
+            const DeepCollectionEquality().equals(other.attempt, attempt) &&
+            const DeepCollectionEquality().equals(other.playerWon, playerWon) &&
+            const DeepCollectionEquality()
+                .equals(other.playerLost, playerLost) &&
+            const DeepCollectionEquality()
+                .equals(other.wrongWordDialog, wrongWordDialog));
   }
 
   @override
@@ -178,7 +234,10 @@ class _$_GameState implements _GameState {
       const DeepCollectionEquality().hash(hiddenWord),
       const DeepCollectionEquality().hash(_answers),
       const DeepCollectionEquality().hash(_keyboard),
-      const DeepCollectionEquality().hash(attempt));
+      const DeepCollectionEquality().hash(attempt),
+      const DeepCollectionEquality().hash(playerWon),
+      const DeepCollectionEquality().hash(playerLost),
+      const DeepCollectionEquality().hash(wrongWordDialog));
 
   @JsonKey(ignore: true)
   @override
@@ -191,7 +250,10 @@ abstract class _GameState implements GameState {
       {required final String hiddenWord,
       required final List<List<OneLetter>> answers,
       required final List<List<String>> keyboard,
-      final int attempt}) = _$_GameState;
+      final int attempt,
+      final bool playerWon,
+      final bool playerLost,
+      final bool wrongWordDialog}) = _$_GameState;
 
   @override
   String get hiddenWord => throw _privateConstructorUsedError;
@@ -201,6 +263,12 @@ abstract class _GameState implements GameState {
   List<List<String>> get keyboard => throw _privateConstructorUsedError;
   @override
   int get attempt => throw _privateConstructorUsedError;
+  @override
+  bool get playerWon => throw _privateConstructorUsedError;
+  @override
+  bool get playerLost => throw _privateConstructorUsedError;
+  @override
+  bool get wrongWordDialog => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GameStateCopyWith<_$_GameState> get copyWith =>
