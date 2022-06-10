@@ -71,6 +71,11 @@ class Translations implements i69n.I69nMessageBundle {
   String get letterSoftSign => "W";
   String get letterB => "B";
   String get letterJU => "JU";
+  String get okButtonTitle => "OK";
+  String get congratulationtDlgTitle => "Congratulation";
+  String get congratulationDlgBody => "The word is guessed! Congratulation!";
+  String get notCorrectWordDlgTitle => "Wrong word";
+  String get notCorrectWordDlgBody => "This word is not in the dictionary!";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -150,6 +155,16 @@ class Translations implements i69n.I69nMessageBundle {
         return letterB;
       case 'letterJU':
         return letterJU;
+      case 'okButtonTitle':
+        return okButtonTitle;
+      case 'congratulationtDlgTitle':
+        return congratulationtDlgTitle;
+      case 'congratulationDlgBody':
+        return congratulationDlgBody;
+      case 'notCorrectWordDlgTitle':
+        return notCorrectWordDlgTitle;
+      case 'notCorrectWordDlgBody':
+        return notCorrectWordDlgBody;
       default:
         return key;
     }

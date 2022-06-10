@@ -34,3 +34,8 @@ letterT: T
 letterSoftSign: W
 letterB: B
 letterJU: JU
+okButtonTitle: OK
+congratulationtDlgTitle: Congratulation
+congratulationDlgBody: The word is guessed! Congratulation!
+notCorrectWordDlgTitle: 'Wrong word'
+notCorrectWordDlgBody: This word is not in the dictionary!
