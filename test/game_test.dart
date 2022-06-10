@@ -10,6 +10,7 @@ import './step/i_wait_second.dart';
 import './step/i_see_text.dart';
 import './step/i_see_text_times.dart';
 import './step/i_enter_word.dart';
+import './step/i_tap_icon.dart';
 import './step/i_see_coloredbox_with_color.dart';
 import './step/i_see_letter_marked_at_guessed.dart';
 
@@ -28,10 +29,16 @@ void main() {
     });
     testWidgets('''User guessed the letter В''', (tester) async {
       await bddSetUp(tester);
-      await iEnterWord(tester, ['В', 'У', 'Й', 'К', 'А']);
-      await iTapText(tester, '>');
+      await iEnterWord(tester, ['В', 'І', 'Т', 'Е', 'Р']);
+      await iTapIcon(tester, Icons.keyboard_return);
       await iSeeColoredboxWithColor(tester, Colors.green);
       await iSeeLetterMarkedAtGuessed(tester, 'В');
+    });
+    testWidgets('''User canceled letter entry''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'К');
+      await iTapIcon(tester, Icons.backspace_outlined);
+      await iSeeTextTimes(tester, 'К', 1);
     });
   });
 }
