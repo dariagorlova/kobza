@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kobza/features/game/cubit/game_cubit.dart';
 import 'package:kobza/localization/localization.dart';
 
 Future<void> showAlertDialog(BuildContext context, String title, String body) {
   return showDialog<void>(
-      context: context,
-      builder: (context) => _AlertDialog(
-            title: title,
-            body: body,
-          ));
+    context: context,
+    builder: (context) => _AlertDialog(
+      title: title,
+      body: body,
+    ),
+  );
 }
 
 class _AlertDialog extends StatelessWidget {
