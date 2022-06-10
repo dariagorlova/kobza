@@ -9,11 +9,18 @@ import 'package:kobza/routes/app_router.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit(
     this._router,
-    CurrentWordRepository _currentWordRepository,
+    //CurrentWordRepository _currentWordRepository,
+    this._currentWordRepository,
   ) : super(
           GameState(
             hiddenWord: _currentWordRepository.getCurrentWord(),
-            answers: defaultAnswers,
+            answers: List.generate(
+              6,
+              (a) => List.generate(
+                5,
+                (l) => const OneLetter(),
+              ),
+            ),
             keyboard: [
               ['Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ґ', 'Ш', 'Щ', 'З', 'Х'],
               ['Ф', 'І', 'Ї', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Є'],
@@ -23,10 +30,10 @@ class GameCubit extends Cubit<GameState> {
         );
 
   final AppRouter _router;
-  //final CurrentWordRepository _currentWordRepository;
+  final CurrentWordRepository _currentWordRepository;
 
   void letterPressed(String letter) {
-    if (state.attempt >= state.answers.length) {
+    if ((state.attempt >= state.answers.length) || (state.guessed)) {
       return;
     }
 
@@ -70,6 +77,44 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(answers: answers));
   }
 
+  void addAndAnalyzeNewAttempt() {
+    if (!state.currentWordIsFull) {
+      return;
+    }
+
+    if (!isCorrectWord()) {
+      emit(state.copyWith(wrongWordDialog: true));
+      emit(state.copyWith(wrongWordDialog: false));
+      return;
+    }
+
+    emit(state.copyWith(attempt: state.attempt + 1));
+    markAnsweredLetters();
+
+    if (state.guessed) {
+      emit(state.copyWith(playerWon: true));
+    } else if (state.attempt >= state.answers.length) {
+      emit(state.copyWith(playerLost: true));
+    }
+  }
+
+  bool isCorrectWord() {
+    // final wordAsStr = StringBuffer();
+    // state.currentWord.map(
+    //   (e) => wordAsStr.write(e.letter),
+    // );
+    final wordAsStr = state.currentWord.map((l) => l.letter).join();
+    // final wordAsStr = StringBuffer();
+    // for (var i = 0; i < state.currentWord.length; i++) {
+    //   wordAsStr.write(state.currentWord[i].letter);
+    // }
+
+    if (!_currentWordRepository.isWordInRepository(wordAsStr)) {
+      return false;
+    }
+    return true;
+  }
+
   void markAnsweredLetters() {
     final answers = state.answers
         .map(
@@ -103,13 +148,26 @@ class GameCubit extends Cubit<GameState> {
     return LetterState.wrong;
   }
 
-  void addAndAnalyzeNewAttempt() {
-    if (!state.currentWordIsFull) {
-      return;
+  bool getEnable(String letter) {
+    if (letter == '<' || letter == '>') {
+      if (!state.currentWordIsFull && letter == '>') {
+        return false;
+      } else {
+        if (!state.canDelete && letter == '<') {
+          return false;
+        }
+        return true;
+      }
+    } else if (state.guessed) {
+      return false;
     }
-    emit(state.copyWith(attempt: state.attempt + 1));
-    markAnsweredLetters();
+
+    return true;
   }
+
+  // bool isGameOver() {
+  //   return state.guessed;
+  // }
 
   void endGame() {
     _router.pop();

@@ -5,14 +5,6 @@ part 'game_state.freezed.dart';
 
 typedef Keyboard = List<List<OneLetter>>;
 
-final defaultAnswers = List.generate(
-  6,
-  (a) => List.generate(
-    5,
-    (l) => const OneLetter(),
-  ),
-);
-
 @freezed
 class GameState with _$GameState {
   const factory GameState({
@@ -20,6 +12,9 @@ class GameState with _$GameState {
     required List<List<OneLetter>> answers,
     required List<List<String>> keyboard,
     @Default(0) int attempt,
+    @Default(false) bool playerWon,
+    @Default(false) bool playerLost,
+    @Default(false) bool wrongWordDialog,
   }) = _GameState;
 }
 

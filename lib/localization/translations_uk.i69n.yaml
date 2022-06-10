@@ -34,3 +34,8 @@ letterT: Т
 letterSoftSign: Ь
 letterB: Б
 letterJU: Ю
+okButtonTitle: Ладно
+congratulationtDlgTitle: Вітаю
+congratulationDlgBody: Ти вгадав слово!
+notCorrectWordDlgTitle: 'Помилка'
+notCorrectWordDlgBody: Цього слова немає у словнику!

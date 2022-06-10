@@ -14,14 +14,16 @@ class CurrentWordRepository {
 
   String getRandomWord() {
     final list = allWords.getAllWords();
-    // random from words_repository
     final index = Random(seed).nextInt(list.length);
 
     return list.elementAt(index);
   }
 
+  bool isWordInRepository(String word) {
+    return allWords.getAllWords().contains(word);
+  }
+
   String getCurrentWord() {
     return getRandomWord();
-    //if (word.word == '') word = const CurrentWord(word: 'КОБЗА');
   }
 }

@@ -72,6 +72,11 @@ class Translations_uk extends Translations {
   String get letterSoftSign => "Ь";
   String get letterB => "Б";
   String get letterJU => "Ю";
+  String get okButtonTitle => "Ладно";
+  String get congratulationtDlgTitle => "Вітаю";
+  String get congratulationDlgBody => "Ти вгадав слово!";
+  String get notCorrectWordDlgTitle => "Помилка";
+  String get notCorrectWordDlgBody => "Цього слова немає у словнику!";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -151,6 +156,16 @@ class Translations_uk extends Translations {
         return letterB;
       case 'letterJU':
         return letterJU;
+      case 'okButtonTitle':
+        return okButtonTitle;
+      case 'congratulationtDlgTitle':
+        return congratulationtDlgTitle;
+      case 'congratulationDlgBody':
+        return congratulationDlgBody;
+      case 'notCorrectWordDlgTitle':
+        return notCorrectWordDlgTitle;
+      case 'notCorrectWordDlgBody':
+        return notCorrectWordDlgBody;
       default:
         return super[key];
     }
