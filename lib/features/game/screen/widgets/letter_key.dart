@@ -4,14 +4,10 @@ import 'package:kobza/core/model/one_letter.dart';
 import 'package:kobza/features/game/cubit/game_cubit.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/features/game/screen/util/letter_state_extension.dart';
-import 'package:kobza/localization/localization.dart';
 
 class LetterKey extends StatelessWidget {
   const LetterKey({super.key, required this.letter});
   final String letter;
-
-  // skrin koly prograv
-  // tests!!
 
   @override
   Widget build(BuildContext context) {
@@ -83,25 +79,4 @@ bool _stateFound(LetterState state, String l, List<OneLetter> allLetters) {
   return allLetters.any(
     (letter) => letter.letter == l && letter.letterState == state,
   );
-}
-
-Future<void> showAlertDialog(BuildContext context, String title, String body) {
-  final t = AppLocalizations.of(context);
-  final dialog = AlertDialog(
-    title: Text(title),
-    content: Text(body),
-    actions: [
-      ElevatedButton(
-        child: Text(t.okButtonTitle),
-        onPressed: () {
-          Navigator.of(context).pop();
-          if (title == t.congratulationtDlgTitle) {
-            context.read<GameCubit>().endGame();
-          }
-        },
-      ),
-    ],
-  );
-
-  return showDialog<void>(context: context, builder: (context) => dialog);
 }
