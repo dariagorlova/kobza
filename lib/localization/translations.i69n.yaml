@@ -37,5 +37,7 @@ letterJU: JU
 okButtonTitle: OK
 congratulationtDlgTitle: Congratulation
 congratulationDlgBody: The word is guessed! Congratulation!
-notCorrectWordDlgTitle: 'Wrong word'
+notCorrectWordDlgTitle: Wrong word
 notCorrectWordDlgBody: This word is not in the dictionary!
+lostDlgTitle: Loss
+lostDlgBody(String word): You didn't guess. There was a hidden word - $word. Try again! 

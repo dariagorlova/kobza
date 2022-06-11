@@ -37,5 +37,7 @@ letterJU: Ю
 okButtonTitle: Ладно
 congratulationtDlgTitle: Вітаю
 congratulationDlgBody: Ти вгадав слово!
-notCorrectWordDlgTitle: 'Помилка'
+notCorrectWordDlgTitle: Помилка
 notCorrectWordDlgBody: Цього слова немає у словнику!
+lostDlgTitle: Невдача
+lostDlgBody(String word): Ти не вгадав. Загадане слово - $word. Спробуй ще! 
