@@ -26,5 +26,11 @@ void main() {
       await iWaitSecond(tester, 1);
       await iSeeIcon(tester, Icons.close);
     });
+    testWidgets('''Useer tap button Random''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'random');
+      await iWaitSecond(tester, 1);
+      await iSeeIcon(tester, Icons.close);
+    });
   });
 }

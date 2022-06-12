@@ -7,12 +7,17 @@ class CurrentWordRepository {
   CurrentWordRepository(
     this.allWords,
     @Named('seed') this.seed,
+    @Named('randomSeed') this.randomSeed,
   );
 
   final WordsRepository allWords;
   final int seed;
+  final int randomSeed;
 
-  String getRandomWord() {
+  String getCurrentDayWord() => _getWord(seed);
+  String getRandomWord() => _getWord(randomSeed);
+
+  String _getWord(int seed) {
     final list = allWords.getAllWords();
     final index = Random(seed).nextInt(list.length);
 
@@ -23,7 +28,7 @@ class CurrentWordRepository {
     return allWords.getAllWords().contains(word);
   }
 
-  String getCurrentWord() {
-    return getRandomWord();
-  }
+  // String getCurrentWord() {
+  //   return getRandomWord();
+  // }
 }

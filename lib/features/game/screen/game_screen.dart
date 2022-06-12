@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/features/game/cubit/game_cubit.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
-import 'package:kobza/features/game/screen/widgets/letter_key.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
+import 'package:kobza/features/game/screen/widgets/alert_dialog.dart';
 import 'package:kobza/features/game/screen/widgets/one_attempt.dart';
 import 'package:kobza/features/game/screen/widgets/virtual_keyboard.dart';
 import 'package:kobza/localization/localization.dart';
@@ -11,12 +12,15 @@ import 'package:kobza/localization/localization.dart';
 class GameScreen extends StatelessWidget {
   const GameScreen({
     super.key,
+    required this.gameMode,
   });
+
+  final GameMode gameMode;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<GameCubit>(),
+      create: (context) => getIt<GameCubit>(param1: gameMode),
       child: const _GameScreen(),
     );
   }
@@ -59,21 +63,36 @@ class _GameScreenState extends State<_GameScreen> {
               Navigator.pop(context);
             }
           },
-          child: SafeArea(
-            child: Column(
-              children: [
-                IconButton(
-                  alignment: Alignment.topRight,
-                  onPressed: () {
-                    context.read<GameCubit>().endGame();
-                  },
-                  icon: const Icon(Icons.close),
-                ),
-                const Expanded(
-                  child: GameField(),
-                ),
-                const VirtualKeyboard(),
-              ],
+          child: BlocListener<GameCubit, GameState>(
+            listenWhen: (previous, current) =>
+                !previous.playerLost && current.playerLost,
+            listener: (context, state) async {
+              final t = AppLocalizations.of(context);
+              await showAlertDialog(
+                context,
+                t.lostDlgTitle,
+                t.lostDlgBody(state.hiddenWord),
+              );
+              // if (mounted) {
+              //   Navigator.pop(context);
+              // }
+            },
+            child: SafeArea(
+              child: Column(
+                children: [
+                  IconButton(
+                    alignment: Alignment.topRight,
+                    onPressed: () {
+                      context.read<GameCubit>().endGame();
+                    },
+                    icon: const Icon(Icons.close),
+                  ),
+                  const Expanded(
+                    child: GameField(),
+                  ),
+                  const VirtualKeyboard(),
+                ],
+              ),
             ),
           ),
         ),

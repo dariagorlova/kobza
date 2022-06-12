@@ -77,6 +77,9 @@ class Translations_uk extends Translations {
   String get congratulationDlgBody => "Ти вгадав слово!";
   String get notCorrectWordDlgTitle => "Помилка";
   String get notCorrectWordDlgBody => "Цього слова немає у словнику!";
+  String get lostDlgTitle => "Невдача";
+  String lostDlgBody(String word) =>
+      "Ти не вгадав. Загадане слово - $word. Спробуй ще!";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -166,6 +169,10 @@ class Translations_uk extends Translations {
         return notCorrectWordDlgTitle;
       case 'notCorrectWordDlgBody':
         return notCorrectWordDlgBody;
+      case 'lostDlgTitle':
+        return lostDlgTitle;
+      case 'lostDlgBody':
+        return lostDlgBody;
       default:
         return super[key];
     }

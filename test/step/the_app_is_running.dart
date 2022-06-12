@@ -19,6 +19,7 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
   di.getIt
     ..allowReassignment = true
     ..registerFactory<int>(() => 0, instanceName: 'seed')
+    ..registerFactory<int>(() => 1, instanceName: 'randomSeed')
     ..registerSingleton(getWordsRepository())
     ..allowReassignment = false;
 }

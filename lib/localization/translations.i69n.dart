@@ -76,6 +76,9 @@ class Translations implements i69n.I69nMessageBundle {
   String get congratulationDlgBody => "The word is guessed! Congratulation!";
   String get notCorrectWordDlgTitle => "Wrong word";
   String get notCorrectWordDlgBody => "This word is not in the dictionary!";
+  String get lostDlgTitle => "Loss";
+  String lostDlgBody(String word) =>
+      "You didn't guess. There was a hidden word - $word. Try again!";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -165,6 +168,10 @@ class Translations implements i69n.I69nMessageBundle {
         return notCorrectWordDlgTitle;
       case 'notCorrectWordDlgBody':
         return notCorrectWordDlgBody;
+      case 'lostDlgTitle':
+        return lostDlgTitle;
+      case 'lostDlgBody':
+        return lostDlgBody;
       default:
         return key;
     }

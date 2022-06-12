@@ -1,0 +1,4 @@
+enum GameMode {
+  currentDay,
+  random,
+}

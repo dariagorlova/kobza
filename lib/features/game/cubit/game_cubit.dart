@@ -3,17 +3,21 @@ import 'package:injectable/injectable.dart';
 import 'package:kobza/core/model/one_letter.dart';
 import 'package:kobza/core/service/current_word_repository.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/routes/app_router.dart';
 
 @injectable
 class GameCubit extends Cubit<GameState> {
   GameCubit(
     this._router,
-    //CurrentWordRepository _currentWordRepository,
     this._currentWordRepository,
+    // GameMode gameMode,
+    @factoryParam GameMode gameMode,
   ) : super(
           GameState(
-            hiddenWord: _currentWordRepository.getCurrentWord(),
+            hiddenWord: gameMode == GameMode.currentDay
+                ? _currentWordRepository.getCurrentDayWord()
+                : _currentWordRepository.getRandomWord(),
             answers: List.generate(
               6,
               (a) => List.generate(
@@ -95,19 +99,13 @@ class GameCubit extends Cubit<GameState> {
       emit(state.copyWith(playerWon: true));
     } else if (state.attempt >= state.answers.length) {
       emit(state.copyWith(playerLost: true));
+      emit(state.copyWith(attempt: state.attempt - 1));
+      restartGame();
     }
   }
 
   bool isCorrectWord() {
-    // final wordAsStr = StringBuffer();
-    // state.currentWord.map(
-    //   (e) => wordAsStr.write(e.letter),
-    // );
     final wordAsStr = state.currentWord.map((l) => l.letter).join();
-    // final wordAsStr = StringBuffer();
-    // for (var i = 0; i < state.currentWord.length; i++) {
-    //   wordAsStr.write(state.currentWord[i].letter);
-    // }
 
     if (!_currentWordRepository.isWordInRepository(wordAsStr)) {
       return false;
@@ -165,11 +163,33 @@ class GameCubit extends Cubit<GameState> {
     return true;
   }
 
-  // bool isGameOver() {
-  //   return state.guessed;
-  // }
-
   void endGame() {
     _router.pop();
+  }
+
+  void restartGame() {
+    final answers = state.answers
+        .map(
+          (word) => word
+              .asMap()
+              .map(
+                (index, letter) => MapEntry(
+                  index,
+                  letter.copyWith(
+                    letter: '',
+                    letterState: LetterState.initial,
+                  ),
+                ),
+              )
+              .values
+              .toList(),
+        )
+        .toList();
+    emit(state.copyWith(answers: answers));
+
+    emit(state.copyWith(attempt: 0));
+    emit(state.copyWith(playerWon: false));
+    emit(state.copyWith(playerLost: false));
+    emit(state.copyWith(wrongWordDialog: false));
   }
 }

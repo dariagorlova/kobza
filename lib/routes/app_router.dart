@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/features/game/screen/game_screen.dart';
 import 'package:kobza/features/start/start_screen.dart';
 
