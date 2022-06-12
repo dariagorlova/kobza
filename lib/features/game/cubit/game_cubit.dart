@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:kobza/core/model/one_letter.dart';
 import 'package:kobza/core/service/current_word_repository.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/routes/app_router.dart';
 
 @injectable
@@ -10,9 +11,13 @@ class GameCubit extends Cubit<GameState> {
   GameCubit(
     this._router,
     this._currentWordRepository,
+    // GameMode gameMode,
+    @factoryParam GameMode gameMode,
   ) : super(
           GameState(
-            hiddenWord: _currentWordRepository.getCurrentWord(),
+            hiddenWord: gameMode == GameMode.currentDay
+                ? _currentWordRepository.getCurrentDayWord()
+                : _currentWordRepository.getRandomWord(),
             answers: List.generate(
               6,
               (a) => List.generate(

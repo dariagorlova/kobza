@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/features/game/cubit/game_cubit.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/features/game/screen/widgets/alert_dialog.dart';
 import 'package:kobza/features/game/screen/widgets/one_attempt.dart';
 import 'package:kobza/features/game/screen/widgets/virtual_keyboard.dart';
@@ -11,12 +12,15 @@ import 'package:kobza/localization/localization.dart';
 class GameScreen extends StatelessWidget {
   const GameScreen({
     super.key,
+    required this.gameMode,
   });
+
+  final GameMode gameMode;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<GameCubit>(),
+      create: (context) => getIt<GameCubit>(param1: gameMode),
       child: const _GameScreen(),
     );
   }

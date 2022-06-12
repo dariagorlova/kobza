@@ -11,4 +11,9 @@ Feature: Start of application
     And I tap {'daily'} text
     And I wait {1} second
     Then I see {Icons.close} icon
+
+  Scenario: Useer tap button Random
+    And I tap {'random'} text
+    And I wait {1} second
+    Then I see {Icons.close} icon
     

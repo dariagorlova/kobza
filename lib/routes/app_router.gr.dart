@@ -22,8 +22,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const StartScreen());
     },
     GameRoute.name: (routeData) {
+      final args = routeData.argsAs<GameRouteArgs>();
       return MaterialPageX<bool>(
-          routeData: routeData, child: const GameScreen());
+          routeData: routeData,
+          child: GameScreen(key: args.key, gameMode: args.gameMode));
     }
   };
 
@@ -44,8 +46,24 @@ class StartRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [GameScreen]
-class GameRoute extends PageRouteInfo<void> {
-  const GameRoute() : super(GameRoute.name, path: '/game-screen');
+class GameRoute extends PageRouteInfo<GameRouteArgs> {
+  GameRoute({Key? key, required GameMode gameMode})
+      : super(GameRoute.name,
+            path: '/game-screen',
+            args: GameRouteArgs(key: key, gameMode: gameMode));
 
   static const String name = 'GameRoute';
+}
+
+class GameRouteArgs {
+  const GameRouteArgs({this.key, required this.gameMode});
+
+  final Key? key;
+
+  final GameMode gameMode;
+
+  @override
+  String toString() {
+    return 'GameRouteArgs{key: $key, gameMode: $gameMode}';
+  }
 }

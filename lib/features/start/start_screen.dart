@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kobza/di/injection.dart';
+import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/localization/localization.dart';
 import 'package:kobza/routes/app_router.dart';
 
@@ -34,8 +35,11 @@ class StartScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // GameRoute
-                    getIt<AppRouter>().push(const GameRoute());
+                    getIt<AppRouter>().push(
+                      GameRoute(
+                        gameMode: GameMode.currentDay,
+                      ),
+                    );
                   },
                   child: Text(
                     t.everyDayWordButtonTitle,
@@ -45,7 +49,13 @@ class StartScreen extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    getIt<AppRouter>().push(
+                      GameRoute(
+                        gameMode: GameMode.random,
+                      ),
+                    );
+                  },
                   child: Text(
                     t.randomWordButtonTitle,
                     style: Theme.of(context).textTheme.headline6!.copyWith(
