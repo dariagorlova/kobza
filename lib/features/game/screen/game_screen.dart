@@ -80,24 +80,17 @@ class _GameScreenState extends State<_GameScreen> {
             child: SafeArea(
               child: Column(
                 children: [
-                  Container(
+                  IconButton(
                     alignment: Alignment.topRight,
-                    child: IconButton(
-                      onPressed: () {
-                        context.read<GameCubit>().endGame();
-                      },
-                      icon: const Icon(Icons.close),
-                    ),
+                    onPressed: () {
+                      context.read<GameCubit>().endGame();
+                    },
+                    icon: const Icon(Icons.close),
                   ),
                   const Expanded(
                     child: GameField(),
                   ),
-                  const SizedBox(
-                    height: 130,
-                    width: double.infinity,
-                    child: VirtualKeyboard(),
-                  ),
-                  //const VirtualKeyboard(),
+                  const VirtualKeyboard(),
                 ],
               ),
             ),

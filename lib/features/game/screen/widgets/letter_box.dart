@@ -16,9 +16,7 @@ class LetterBox extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       width: MediaQuery.of(context).size.width / 10,
       color: letter.letterState.stateToBorderColor(context),
-      child: Text(
-        letter.letter,
-      ),
+      child: Text(letter.letter),
     );
   }
 }
