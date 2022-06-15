@@ -9,17 +9,22 @@ class VirtualKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<GameCubit, GameState, List<List<String>>>(
-      selector: (state) => state.keyboard,
-      builder: (context, keyboard) => Column(
-        children: keyboard
-            .map(
-              (line) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: line.map((c) => LetterKey(letter: c)).toList(),
-              ),
-            )
-            .toList(),
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: BlocSelector<GameCubit, GameState, List<List<String>>>(
+        selector: (state) => state.keyboard,
+        builder: (context, keyboard) => Column(
+          children: keyboard
+              .map(
+                (line) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: line
+                      .map((c) => Expanded(child: LetterKey(letter: c)))
+                      .toList(),
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }

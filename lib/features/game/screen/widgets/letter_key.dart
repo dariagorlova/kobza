@@ -5,9 +5,16 @@ import 'package:kobza/features/game/cubit/game_cubit.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/features/game/screen/util/letter_state_extension.dart';
 
-class LetterKey extends StatelessWidget {
+class LetterKey extends StatefulWidget {
   const LetterKey({super.key, required this.letter});
   final String letter;
+
+  @override
+  State<LetterKey> createState() => _LetterKeyState();
+}
+
+class _LetterKeyState extends State<LetterKey> {
+  OverlayEntry? _overlayEntry;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +24,37 @@ class LetterKey extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(2),
           child: ColoredBox(
-            color: _getState(letter, answers).stateToBorderColor(context),
+            color:
+                _getState(widget.letter, answers).stateToBorderColor(context),
             child: InkWell(
-              onTap: context.read<GameCubit>().getEnable(letter)
+              onTap: context.read<GameCubit>().getEnable(widget.letter)
                   ? () {
-                      context.read<GameCubit>().letterPressed(letter);
+                      context.read<GameCubit>().letterPressed(widget.letter);
                     }
                   : null,
-              child: LetterSizedBox(letter: letter),
+              onTapDown: (details) {
+                final color = _getState(widget.letter, answers)
+                    .stateToBorderColor(context);
+                final overlay = _createOverlayEntry(
+                  context,
+                  widget.letter,
+                  color,
+                );
+                _overlayEntry = overlay;
+                if (overlay != null) {
+                  Overlay.of(context)?.insert(overlay);
+                }
+              },
+              onTapUp: (details) {
+                _overlayEntry?.remove();
+              },
+              onTapCancel: () {
+                _overlayEntry?.remove();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: LetterSizedBox(letter: widget.letter),
+              ),
             ),
           ),
         );
@@ -44,19 +74,13 @@ class LetterSizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (letter == '<') {
-      return const SizedBox(
-        child: Icon(Icons.backspace_outlined),
-      );
+      return const Icon(Icons.backspace_outlined);
     } else if (letter == '>') {
-      return const SizedBox(child: Icon(Icons.keyboard_return));
+      return const Icon(Icons.keyboard_return);
     }
-    return SizedBox(
-      height: 35,
-      width: 24,
-      child: Text(
-        letter,
-        textAlign: TextAlign.center,
-      ),
+    return Text(
+      letter,
+      textAlign: TextAlign.center,
     );
   }
 }
@@ -80,3 +104,58 @@ bool _stateFound(LetterState state, String l, List<OneLetter> allLetters) {
     (letter) => letter.letter == l && letter.letterState == state,
   );
 }
+
+OverlayEntry? _createOverlayEntry(
+  BuildContext context,
+  String letter,
+  Color color,
+) {
+  final renderBox = context.findRenderObject() as RenderBox?;
+  if (renderBox == null) {
+    return null;
+  }
+  final size = renderBox.size;
+  final offset = renderBox.localToGlobal(Offset.zero);
+
+  return OverlayEntry(
+    builder: (context) => Positioned(
+      left: offset.dx,
+      top: offset.dy - size.height - 5.0,
+      width: size.width,
+      height: size.height * 2,
+      child: Material(
+        color: color,
+        child: LetterSizedBox(letter: letter),
+      ),
+    ),
+  );
+}
+
+// @override
+// Widget build(BuildContext context) {
+// 	return Scaffold(
+// 	appBar: AppBar(
+// 		title: Text(
+// 		'GeeksForGeeks Example 2',
+// 		style: TextStyle(fontWeight: FontWeight.bold),
+// 		),
+// 	),
+// 	body: SafeArea(
+// 		child: Center(
+// 			child: MaterialButton(
+// 		color: Colors.green,
+// 		minWidth: MediaQuery.of(context).size.width * 0.4,
+// 		height: MediaQuery.of(context).size.height * 0.06,
+// 		child: Text(
+// 		'show Overlay',
+// 		style: TextStyle(color: Colors.white),
+// 		),
+// 		onPressed: () {
+// 		// calling the _showOverlay method
+// 		// when Button is pressed
+// 		_showOverlay(context);
+// 		},
+// 	))),
+// 	);
+// }
+// }

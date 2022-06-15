@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
         splashColor: Colors.orange,
         focusColor: Colors.green,
         cardColor: Colors.white,
+        dividerColor: Colors.black,
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
