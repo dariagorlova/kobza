@@ -21,6 +21,7 @@ class _LetterKeyState extends State<LetterKey> {
     return BlocSelector<GameCubit, GameState, Keyboard>(
       selector: (state) => state.answers,
       builder: (context, answers) {
+        // final temp = Stack(clipBehavior: Clip.none,);
         return Padding(
           padding: const EdgeInsets.all(2),
           child: ColoredBox(

@@ -92,7 +92,12 @@ class _GameScreenState extends State<_GameScreen> {
                   const Expanded(
                     child: GameField(),
                   ),
-                  const VirtualKeyboard(),
+                  const SizedBox(
+                    height: 130,
+                    width: double.infinity,
+                    child: VirtualKeyboard(),
+                  ),
+                  //const VirtualKeyboard(),
                 ],
               ),
             ),
