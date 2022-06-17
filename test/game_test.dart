@@ -11,7 +11,6 @@ import './step/i_see_text.dart';
 import './step/i_see_text_times.dart';
 import './step/i_enter_word.dart';
 import './step/i_tap_icon.dart';
-import './step/i_see_coloredbox_with_color.dart';
 import './step/i_see_letter_marked_at_guessed.dart';
 import './step/i_enter_word_times.dart';
 import './step/i_dont_see_letter_marked_at_unguessed.dart';
@@ -22,7 +21,6 @@ void main() {
     await iTapText(tester, 'daily');
     await iWaitSecond(tester, 1);
   }
-
   group('''Game''', () {
     testWidgets('''User tap K key''', (tester) async {
       await bddSetUp(tester);
@@ -34,7 +32,6 @@ void main() {
       await bddSetUp(tester);
       await iEnterWord(tester, ['В', 'І', 'Т', 'Е', 'Р']);
       await iTapIcon(tester, Icons.keyboard_return);
-      await iSeeColoredboxWithColor(tester, Colors.green);
       await iSeeLetterMarkedAtGuessed(tester, 'В');
     });
     testWidgets('''User canceled letter entry''', (tester) async {
