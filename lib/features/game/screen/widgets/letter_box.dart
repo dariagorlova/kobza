@@ -22,7 +22,6 @@ class LetterBox extends StatelessWidget {
           letter.letter,
           style: TextStyle(
             fontSize: textHeight,
-            //fontWeight: FontWeight.bold,
           ),
         ),
       ),

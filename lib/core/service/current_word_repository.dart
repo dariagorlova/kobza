@@ -27,8 +27,4 @@ class CurrentWordRepository {
   bool isWordInRepository(String word) {
     return allWords.getAllWords().contains(word);
   }
-
-  // String getCurrentWord() {
-  //   return getRandomWord();
-  // }
 }
