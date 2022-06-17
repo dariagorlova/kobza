@@ -6,8 +6,8 @@ class MockWordsRepository extends Mock implements WordsRepository {}
 WordsRepository getWordsRepository() {
   final mock = MockWordsRepository();
   when(mock.getAllWords).thenReturn([
-    'КОБЗА',
-    'ВІТЕР',
+    'кобза',
+    'вітер',
   ]);
   return mock;
 }
