@@ -26,34 +26,46 @@ class _LetterKeyState extends State<LetterKey> {
           child: ColoredBox(
             color:
                 _getState(widget.letter, answers).stateToBorderColor(context),
-            child: InkWell(
-              onTap: context.read<GameCubit>().getEnable(widget.letter)
-                  ? () {
-                      context.read<GameCubit>().letterPressed(widget.letter);
-                    }
-                  : null,
-              onTapDown: (details) {
-                final color = _getState(widget.letter, answers)
-                    .stateToBorderColor(context);
-                final overlay = _createOverlayEntry(
-                  context,
-                  widget.letter,
-                  color,
-                );
-                _overlayEntry = overlay;
-                if (overlay != null) {
-                  Overlay.of(context)?.insert(overlay);
-                }
-              },
-              onTapUp: (details) {
-                _overlayEntry?.remove();
-              },
-              onTapCancel: () {
-                _overlayEntry?.remove();
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: LetterSizedBox(letter: widget.letter),
+            child: Container(
+              foregroundDecoration:
+                  !context.read<GameCubit>().getEnable(widget.letter)
+                      ? BoxDecoration(
+                          color: Theme.of(context).errorColor,
+                          backgroundBlendMode: BlendMode.lighten,
+                        )
+                      : null,
+              child: InkWell(
+                onTap: context.read<GameCubit>().getEnable(widget.letter)
+                    ? () {
+                        context.read<GameCubit>().letterPressed(widget.letter);
+                      }
+                    : null,
+                onTapDown: (details) {
+                  final color = _getState(widget.letter, answers)
+                      .stateToBorderColor(context);
+                  final overlay = _createOverlayEntry(
+                    context,
+                    widget.letter,
+                    color,
+                  );
+                  _overlayEntry = overlay;
+                  if (overlay != null) {
+                    Overlay.of(context)?.insert(overlay);
+                  }
+                },
+                onTapUp: (details) {
+                  _overlayEntry?.remove();
+                },
+                onTapCancel: () {
+                  _overlayEntry?.remove();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: LetterSizedBox(
+                    letter: widget.letter,
+                    size: 19,
+                  ),
+                ),
               ),
             ),
           ),
@@ -67,20 +79,29 @@ class LetterSizedBox extends StatelessWidget {
   const LetterSizedBox({
     super.key,
     required this.letter,
+    required this.size,
   });
 
   final String letter;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     if (letter == '<') {
-      return const Icon(Icons.backspace_outlined);
+      return Icon(
+        Icons.backspace_outlined,
+        size: size,
+      );
     } else if (letter == '>') {
-      return const Icon(Icons.keyboard_return);
+      return Icon(
+        Icons.keyboard_return,
+        size: size,
+      );
     }
     return Text(
       letter,
       textAlign: TextAlign.center,
+      style: TextStyle(fontSize: size),
     );
   }
 }
@@ -125,7 +146,7 @@ OverlayEntry? _createOverlayEntry(
       height: size.height * 2,
       child: Material(
         color: color,
-        child: LetterSizedBox(letter: letter),
+        child: LetterSizedBox(letter: letter, size: size.height * 0.8),
       ),
     ),
   );
