@@ -12,12 +12,16 @@ class OneAttempt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: word.map((letter) => LetterBox(letter: letter)).toList(),
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: word
+          .map(
+            (letter) => Padding(
+              padding: const EdgeInsets.all(4),
+              child: LetterBox(letter: letter),
+            ),
+          )
+          .toList(),
     );
   }
 }

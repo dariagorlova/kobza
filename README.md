@@ -1,16 +1,21 @@
-# kobza
+# КОБЗА
 
-A new Flutter project.
+Програма-аналог популярної гри Wordle. Українська версія.
 
-## Getting Started
+## Правила гри
 
-This project is a starting point for a Flutter application.
+Вам потрібно відгадати загадане слово.
 
-A few resources to get you started if this is your first Flutter project:
+У вас є 6 спроб.
+Після кожної спроби кольори секцій будуть змінюватися, щоб показати, наскільки ви були близькі.
+Якщо літера є в загаданому слові та знаходиться у правильному місці, то вона позначиться зеленим.
+Якщо літера є в загаданому слові, але знаходиться не у правильному місці, то вона позначиться світло-коричневим.
+Невгадані літери позначаються олівковим.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Початок гри
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Є два варіанта вибору слова: щоденне (кнопка "щодня") або будь-яке (кнопка "абищо"). 
+
+Щоденне слово одне кожного дня для усіх. Але можно цілий день грати, обираючи варіант "абищо" і слово кожного разу буде інше.
+
+![](./doc/kobza.png) 

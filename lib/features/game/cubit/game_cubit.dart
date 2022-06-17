@@ -105,7 +105,11 @@ class GameCubit extends Cubit<GameState> {
   }
 
   bool isCorrectWord() {
-    final wordAsStr = state.currentWord.map((l) => l.letter).join();
+    final wordAsStr = state.currentWord
+        .map(
+          (l) => l.letter.toLowerCase(),
+        )
+        .join();
 
     if (!_currentWordRepository.isWordInRepository(wordAsStr)) {
       return false;
@@ -122,7 +126,10 @@ class GameCubit extends Cubit<GameState> {
                 (index, letter) => MapEntry(
                   index,
                   letter.copyWith(
-                    letterState: _getLetterState(index, letter.letter),
+                    letterState: _getLetterState(
+                      index,
+                      letter.letter.toLowerCase(),
+                    ),
                   ),
                 ),
               )

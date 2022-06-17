@@ -13,7 +13,7 @@ Feature: Game
   Scenario: User guessed the letter В
     And I enter {['В', 'І', 'Т', 'Е', 'Р']} word
     And I tap {Icons.keyboard_return} icon
-    Then I see ColoredBox with {Colors.green} color
+    #Then I see ColoredBox with {Colors.green} color
     Then I see letter {'В'} marked at guessed
 
   Scenario: User canceled letter entry
