@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/localization/localization.dart';
@@ -24,6 +25,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     configureInjection();
   }
 
@@ -33,13 +39,13 @@ class _MyAppState extends State<MyApp> {
       title: 'AppLocalizations.of(context).mainPageTitle',
       locale: widget.locale,
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        primaryColor: Colors.green,
-        backgroundColor: const Color.fromARGB(255, 250, 243, 185),
-        canvasColor: const Color.fromARGB(255, 219, 218, 218),
-        errorColor: Colors.grey,
-        splashColor: Colors.orange,
-        focusColor: Colors.green,
+        primaryColor: const Color(0xff008F7C),
+        primarySwatch: Colors.lightGreen,
+        backgroundColor: const Color(0xffD4ED8C),
+        canvasColor: const Color(0xffF8FBEA), // initial
+        errorColor: const Color(0xffC5CA67), // wrong
+        splashColor: const Color(0xffC4A54F), // maybe
+        focusColor: const Color(0xff3BA354), // correctly
         cardColor: Colors.white,
         dividerColor: Colors.black,
       ),
