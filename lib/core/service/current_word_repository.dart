@@ -18,7 +18,7 @@ class CurrentWordRepository {
   String getRandomWord() => _getWord(randomSeed);
 
   String _getWord(int seed) {
-    final list = allWords.getAllWords();
+    final list = allWords.getAllKnownWords();
     final index = Random(seed).nextInt(list.length);
 
     return list.elementAt(index);

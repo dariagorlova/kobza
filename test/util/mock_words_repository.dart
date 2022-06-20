@@ -9,5 +9,9 @@ WordsRepository getWordsRepository() {
     'кобза',
     'вітер',
   ]);
+  when(mock.getAllKnownWords).thenReturn([
+    'кобза',
+    'вітер',
+  ]);
   return mock;
 }
