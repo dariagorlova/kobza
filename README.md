@@ -1,4 +1,26 @@
-# КОБЗА
+# VERBA
+
+An analogue of the popular game Wordle. Ukrainian version.
+
+## Rules of the game
+
+You need to guess the word.
+
+You have 6 attempts.
+After each attempt, the colors of the sections will change to show how close you were.
+If the letter is in the word and is in the right place, it will be green.
+If the letter is in the intended word, but is not in the right place, it will be light brown.
+Guessing letters are indicated in olive color.
+
+## The beginning of the game
+
+There are two options for choosing the word: daily ("daily" button) or any ("random" button).
+
+Daily word is one word  for everyone. But you can play all day, choosing the option "random" and the word will be different each time.
+
+![](./doc/kobza.png) 
+
+# ВЕРБА
 
 Програма-аналог популярної гри Wordle. Українська версія.
 

@@ -18,10 +18,10 @@ class StartScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ColoredBoxGreen(text: t.letterK),
-              ColoredBoxGreen(text: t.letterO),
+              ColoredBoxGreen(text: t.letterV),
+              ColoredBoxGreen(text: t.letterE),
+              ColoredBoxGreen(text: t.letterR),
               ColoredBoxGreen(text: t.letterB),
-              ColoredBoxGreen(text: t.letterZ),
               ColoredBoxGreen(text: t.letterA),
             ],
           ),
