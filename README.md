@@ -18,7 +18,7 @@ There are two options for choosing the word: daily ("daily" button) or any ("ran
 
 Daily word is one word  for everyone. But you can play all day, choosing the option "random" and the word will be different each time.
 
-![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/kobza.png) 
+![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/kobza.png =50x100) 
 
 
 
