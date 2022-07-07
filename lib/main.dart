@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'AppLocalizations.of(context).mainPageTitle',
       locale: widget.locale,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xff008F7C),
         primarySwatch: Colors.lightGreen,
