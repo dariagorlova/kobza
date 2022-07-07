@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'AppLocalizations.of(context).mainPageTitle',
+      title: "Let's play in VERBA",
       locale: widget.locale,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
