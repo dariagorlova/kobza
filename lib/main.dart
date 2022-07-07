@@ -53,6 +53,7 @@ class _MyAppState extends State<MyApp> {
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
