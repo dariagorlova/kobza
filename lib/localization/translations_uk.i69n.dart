@@ -36,7 +36,7 @@ String _cardinal(int count,
 
 class Translations_uk extends Translations {
   const Translations_uk();
-  String get mainPageTitle => "Кобза";
+  String get mainPageTitle => "Верба";
   String get everyDayWordButtonTitle => "щодня";
   String get randomWordButtonTitle => "абищо";
   String get letterJ => "Й";
