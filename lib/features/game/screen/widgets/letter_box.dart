@@ -17,7 +17,7 @@ class LetterBox extends StatelessWidget {
     // final textHeight = width * 0.8;
     return Container(
       width: width,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       // height: height,
       // width: MediaQuery.of(context).size.width / 8,
       // height: MediaQuery.of(context).size.height / 12,
