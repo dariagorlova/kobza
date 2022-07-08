@@ -6,24 +6,28 @@ class LetterBox extends StatelessWidget {
   const LetterBox({
     super.key,
     required this.letter,
+    required this.width,
   });
 
   final OneLetter letter;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
-    final textHeight = MediaQuery.of(context).size.width / 14;
+    // final textHeight = width * 0.8;
     return Container(
-      width: MediaQuery.of(context).size.width / 8,
-      height: MediaQuery.of(context).size.height / 12,
+      width: width,
+      padding: EdgeInsets.all(8),
+      // height: height,
+      // width: MediaQuery.of(context).size.width / 8,
+      // height: MediaQuery.of(context).size.height / 12,
       color: letter.letterState.stateToBorderColor(context),
-      child: Center(
-        child: Text(
-          letter.letter,
-          style: TextStyle(
-            fontSize: textHeight,
-          ),
-        ),
+      alignment: Alignment.center,
+      child: Text(
+        letter.letter,
+        style: Theme.of(context).textTheme.headline3?.copyWith(
+              color: Theme.of(context).dividerColor,
+            ),
       ),
     );
   }
