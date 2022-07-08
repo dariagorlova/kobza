@@ -35,7 +35,7 @@ String _cardinal(int count,
 
 class Translations implements i69n.I69nMessageBundle {
   const Translations();
-  String get mainPageTitle => "Kobza";
+  String get mainPageTitle => "Verba";
   String get everyDayWordButtonTitle => "daily";
   String get randomWordButtonTitle => "random";
   String get letterJ => "J";
@@ -53,7 +53,7 @@ class Translations implements i69n.I69nMessageBundle {
   String get letterF => "F";
   String get letterI => "I";
   String get letterJI => "JI";
-  String get letterV => "B";
+  String get letterV => "V";
   String get letterA => "A";
   String get letterP => "P";
   String get letterR => "R";

@@ -48,6 +48,9 @@ class StartScreen extends StatelessWidget {
                         ),
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 ElevatedButton(
                   onPressed: () {
                     getIt<AppRouter>().push(

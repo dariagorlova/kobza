@@ -89,9 +89,8 @@ class _GameScreenState extends State<_GameScreen> {
                       icon: const Icon(Icons.close),
                     ),
                   ),
-                  const Expanded(
-                    child: GameField(),
-                  ),
+                  const GameField(),
+                  const Spacer(),
                   const VirtualKeyboard(),
                 ],
               ),
@@ -109,11 +108,12 @@ class GameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 50, right: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: BlocSelector<GameCubit, GameState, Keyboard>(
         selector: (state) => state.answers,
         builder: (context, words) {
           return Column(
+            mainAxisSize: MainAxisSize.min,
             children: words
                 .map(
                   (word) => OneAttempt(
@@ -121,6 +121,7 @@ class GameField extends StatelessWidget {
                   ),
                 )
                 .toList(),
+            // );
           );
         },
       ),
