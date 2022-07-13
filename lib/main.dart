@@ -29,8 +29,14 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-
+    getIt.pushNewScope();
     configureInjection();
+  }
+
+  @override
+  void dispose() {
+    getIt.popScope();
+    super.dispose();
   }
 
   @override
