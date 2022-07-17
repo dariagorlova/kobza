@@ -60,7 +60,7 @@ class _GameScreenState extends State<_GameScreen> {
               t.congratulationDlgBody,
             );
             if (mounted) {
-              Navigator.pop(context);
+              context.read<GameCubit>().endGame();
             }
           },
           child: BlocListener<GameCubit, GameState>(
