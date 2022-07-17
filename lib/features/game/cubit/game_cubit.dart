@@ -2,9 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kobza/core/model/one_letter.dart';
 import 'package:kobza/core/service/current_word_repository.dart';
+import 'package:kobza/core/service/navigator.dart';
 import 'package:kobza/features/game/cubit/game_state.dart';
 import 'package:kobza/features/game/model/game_mode.dart';
-import 'package:kobza/routes/app_router.dart';
 
 @injectable
 class GameCubit extends Cubit<GameState> {
@@ -33,7 +33,7 @@ class GameCubit extends Cubit<GameState> {
           ),
         );
 
-  final AppRouter _router;
+  final KobzaNavigator _router;
   final CurrentWordRepository _currentWordRepository;
 
   void letterPressed(String letter) {
