@@ -25,7 +25,7 @@ class LetterBox extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         letter.letter,
-        style: Theme.of(context).textTheme.headline3?.copyWith(
+        style: Theme.of(context).textTheme.displaySmall?.copyWith(
               color: Theme.of(context).dividerColor,
             ),
       ),

@@ -25,16 +25,19 @@ class _LetterKeyState extends State<LetterKey> {
         return Padding(
           padding: const EdgeInsets.all(2),
           child: ColoredBox(
-            color:
-                _getState(widget.letter, answers).stateToBorderColor(context),
+            color: _getState(
+              widget.letter,
+              answers,
+            ).stateToBorderColor(context),
             child: Container(
-              foregroundDecoration:
-                  !context.read<GameCubit>().getEnable(widget.letter)
-                      ? BoxDecoration(
-                          color: Theme.of(context).errorColor,
-                          backgroundBlendMode: BlendMode.lighten,
-                        )
-                      : null,
+              foregroundDecoration: !context.read<GameCubit>().getEnable(
+                        widget.letter,
+                      )
+                  ? BoxDecoration(
+                      color: Theme.of(context).colorScheme.error,
+                      backgroundBlendMode: BlendMode.lighten,
+                    )
+                  : null,
               child: InkWell(
                 onTap: context.read<GameCubit>().getEnable(widget.letter)
                     ? () {
@@ -42,8 +45,12 @@ class _LetterKeyState extends State<LetterKey> {
                       }
                     : null,
                 onTapDown: (details) {
-                  final color = _getState(widget.letter, answers)
-                      .stateToBorderColor(context);
+                  final color = _getState(
+                    widget.letter,
+                    answers,
+                  ).stateToBorderColor(
+                    context,
+                  );
                   final overlay = _createOverlayEntry(
                     context,
                     widget.letter,
@@ -51,7 +58,7 @@ class _LetterKeyState extends State<LetterKey> {
                   );
                   _overlayEntry = overlay;
                   if (overlay != null) {
-                    Overlay.of(context)?.insert(overlay);
+                    Overlay.of(context).insert(overlay);
                   }
                 },
                 onTapUp: (details) {

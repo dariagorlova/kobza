@@ -11,7 +11,7 @@ extension XLetterState on LetterState {
       case LetterState.correctly:
         return Theme.of(context).focusColor;
       case LetterState.wrong:
-        return Theme.of(context).errorColor;
+        return Theme.of(context).colorScheme.error;
     }
   }
 }

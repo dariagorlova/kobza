@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'one_letter.dart';
 
@@ -27,66 +27,71 @@ mixin _$OneLetter {
 /// @nodoc
 abstract class $OneLetterCopyWith<$Res> {
   factory $OneLetterCopyWith(OneLetter value, $Res Function(OneLetter) then) =
-      _$OneLetterCopyWithImpl<$Res>;
+      _$OneLetterCopyWithImpl<$Res, OneLetter>;
+  @useResult
   $Res call({String letter, LetterState letterState});
 }
 
 /// @nodoc
-class _$OneLetterCopyWithImpl<$Res> implements $OneLetterCopyWith<$Res> {
+class _$OneLetterCopyWithImpl<$Res, $Val extends OneLetter>
+    implements $OneLetterCopyWith<$Res> {
   _$OneLetterCopyWithImpl(this._value, this._then);
 
-  final OneLetter _value;
   // ignore: unused_field
-  final $Res Function(OneLetter) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? letter = freezed,
-    Object? letterState = freezed,
+    Object? letter = null,
+    Object? letterState = null,
   }) {
     return _then(_value.copyWith(
-      letter: letter == freezed
+      letter: null == letter
           ? _value.letter
           : letter // ignore: cast_nullable_to_non_nullable
               as String,
-      letterState: letterState == freezed
+      letterState: null == letterState
           ? _value.letterState
           : letterState // ignore: cast_nullable_to_non_nullable
               as LetterState,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_OneLetterCopyWith<$Res> implements $OneLetterCopyWith<$Res> {
-  factory _$$_OneLetterCopyWith(
-          _$_OneLetter value, $Res Function(_$_OneLetter) then) =
-      __$$_OneLetterCopyWithImpl<$Res>;
+abstract class _$$OneLetterImplCopyWith<$Res>
+    implements $OneLetterCopyWith<$Res> {
+  factory _$$OneLetterImplCopyWith(
+          _$OneLetterImpl value, $Res Function(_$OneLetterImpl) then) =
+      __$$OneLetterImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String letter, LetterState letterState});
 }
 
 /// @nodoc
-class __$$_OneLetterCopyWithImpl<$Res> extends _$OneLetterCopyWithImpl<$Res>
-    implements _$$_OneLetterCopyWith<$Res> {
-  __$$_OneLetterCopyWithImpl(
-      _$_OneLetter _value, $Res Function(_$_OneLetter) _then)
-      : super(_value, (v) => _then(v as _$_OneLetter));
+class __$$OneLetterImplCopyWithImpl<$Res>
+    extends _$OneLetterCopyWithImpl<$Res, _$OneLetterImpl>
+    implements _$$OneLetterImplCopyWith<$Res> {
+  __$$OneLetterImplCopyWithImpl(
+      _$OneLetterImpl _value, $Res Function(_$OneLetterImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_OneLetter get _value => super._value as _$_OneLetter;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? letter = freezed,
-    Object? letterState = freezed,
+    Object? letter = null,
+    Object? letterState = null,
   }) {
-    return _then(_$_OneLetter(
-      letter: letter == freezed
+    return _then(_$OneLetterImpl(
+      letter: null == letter
           ? _value.letter
           : letter // ignore: cast_nullable_to_non_nullable
               as String,
-      letterState: letterState == freezed
+      letterState: null == letterState
           ? _value.letterState
           : letterState // ignore: cast_nullable_to_non_nullable
               as LetterState,
@@ -96,8 +101,8 @@ class __$$_OneLetterCopyWithImpl<$Res> extends _$OneLetterCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OneLetter implements _OneLetter {
-  const _$_OneLetter(
+class _$OneLetterImpl implements _OneLetter {
+  const _$OneLetterImpl(
       {this.letter = '', this.letterState = LetterState.initial});
 
   @override
@@ -116,34 +121,32 @@ class _$_OneLetter implements _OneLetter {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneLetter &&
-            const DeepCollectionEquality().equals(other.letter, letter) &&
-            const DeepCollectionEquality()
-                .equals(other.letterState, letterState));
+            other is _$OneLetterImpl &&
+            (identical(other.letter, letter) || other.letter == letter) &&
+            (identical(other.letterState, letterState) ||
+                other.letterState == letterState));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(letter),
-      const DeepCollectionEquality().hash(letterState));
+  int get hashCode => Object.hash(runtimeType, letter, letterState);
 
   @JsonKey(ignore: true)
   @override
-  _$$_OneLetterCopyWith<_$_OneLetter> get copyWith =>
-      __$$_OneLetterCopyWithImpl<_$_OneLetter>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$OneLetterImplCopyWith<_$OneLetterImpl> get copyWith =>
+      __$$OneLetterImplCopyWithImpl<_$OneLetterImpl>(this, _$identity);
 }
 
 abstract class _OneLetter implements OneLetter {
   const factory _OneLetter(
-      {final String letter, final LetterState letterState}) = _$_OneLetter;
+      {final String letter, final LetterState letterState}) = _$OneLetterImpl;
 
   @override
-  String get letter => throw _privateConstructorUsedError;
+  String get letter;
   @override
-  LetterState get letterState => throw _privateConstructorUsedError;
+  LetterState get letterState;
   @override
   @JsonKey(ignore: true)
-  _$$_OneLetterCopyWith<_$_OneLetter> get copyWith =>
+  _$$OneLetterImplCopyWith<_$OneLetterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

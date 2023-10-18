@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'current_word.dart';
 
@@ -27,57 +27,61 @@ mixin _$CurrentWord {
 abstract class $CurrentWordCopyWith<$Res> {
   factory $CurrentWordCopyWith(
           CurrentWord value, $Res Function(CurrentWord) then) =
-      _$CurrentWordCopyWithImpl<$Res>;
+      _$CurrentWordCopyWithImpl<$Res, CurrentWord>;
+  @useResult
   $Res call({String word});
 }
 
 /// @nodoc
-class _$CurrentWordCopyWithImpl<$Res> implements $CurrentWordCopyWith<$Res> {
+class _$CurrentWordCopyWithImpl<$Res, $Val extends CurrentWord>
+    implements $CurrentWordCopyWith<$Res> {
   _$CurrentWordCopyWithImpl(this._value, this._then);
 
-  final CurrentWord _value;
   // ignore: unused_field
-  final $Res Function(CurrentWord) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? word = freezed,
+    Object? word = null,
   }) {
     return _then(_value.copyWith(
-      word: word == freezed
+      word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_CurrentWordCopyWith<$Res>
+abstract class _$$CurrentWordImplCopyWith<$Res>
     implements $CurrentWordCopyWith<$Res> {
-  factory _$$_CurrentWordCopyWith(
-          _$_CurrentWord value, $Res Function(_$_CurrentWord) then) =
-      __$$_CurrentWordCopyWithImpl<$Res>;
+  factory _$$CurrentWordImplCopyWith(
+          _$CurrentWordImpl value, $Res Function(_$CurrentWordImpl) then) =
+      __$$CurrentWordImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String word});
 }
 
 /// @nodoc
-class __$$_CurrentWordCopyWithImpl<$Res> extends _$CurrentWordCopyWithImpl<$Res>
-    implements _$$_CurrentWordCopyWith<$Res> {
-  __$$_CurrentWordCopyWithImpl(
-      _$_CurrentWord _value, $Res Function(_$_CurrentWord) _then)
-      : super(_value, (v) => _then(v as _$_CurrentWord));
+class __$$CurrentWordImplCopyWithImpl<$Res>
+    extends _$CurrentWordCopyWithImpl<$Res, _$CurrentWordImpl>
+    implements _$$CurrentWordImplCopyWith<$Res> {
+  __$$CurrentWordImplCopyWithImpl(
+      _$CurrentWordImpl _value, $Res Function(_$CurrentWordImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_CurrentWord get _value => super._value as _$_CurrentWord;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? word = freezed,
+    Object? word = null,
   }) {
-    return _then(_$_CurrentWord(
-      word: word == freezed
+    return _then(_$CurrentWordImpl(
+      word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as String,
@@ -87,8 +91,8 @@ class __$$_CurrentWordCopyWithImpl<$Res> extends _$CurrentWordCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CurrentWord implements _CurrentWord {
-  const _$_CurrentWord({required this.word});
+class _$CurrentWordImpl implements _CurrentWord {
+  const _$CurrentWordImpl({required this.word});
 
   @override
   final String word;
@@ -102,27 +106,27 @@ class _$_CurrentWord implements _CurrentWord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentWord &&
-            const DeepCollectionEquality().equals(other.word, word));
+            other is _$CurrentWordImpl &&
+            (identical(other.word, word) || other.word == word));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(word));
+  int get hashCode => Object.hash(runtimeType, word);
 
   @JsonKey(ignore: true)
   @override
-  _$$_CurrentWordCopyWith<_$_CurrentWord> get copyWith =>
-      __$$_CurrentWordCopyWithImpl<_$_CurrentWord>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CurrentWordImplCopyWith<_$CurrentWordImpl> get copyWith =>
+      __$$CurrentWordImplCopyWithImpl<_$CurrentWordImpl>(this, _$identity);
 }
 
 abstract class _CurrentWord implements CurrentWord {
-  const factory _CurrentWord({required final String word}) = _$_CurrentWord;
+  const factory _CurrentWord({required final String word}) = _$CurrentWordImpl;
 
   @override
-  String get word => throw _privateConstructorUsedError;
+  String get word;
   @override
   @JsonKey(ignore: true)
-  _$$_CurrentWordCopyWith<_$_CurrentWord> get copyWith =>
+  _$$CurrentWordImplCopyWith<_$CurrentWordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

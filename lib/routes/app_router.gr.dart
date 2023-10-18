@@ -1,62 +1,65 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 part of 'app_router.dart';
 
-class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+abstract class _$AppRouter extends RootStackRouter {
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    StartRoute.name: (routeData) {
-      return MaterialPageX<void>(
-          routeData: routeData, child: const StartScreen());
-    },
     GameRoute.name: (routeData) {
       final args = routeData.argsAs<GameRouteArgs>();
-      return MaterialPageX<bool>(
-          routeData: routeData,
-          child: GameScreen(key: args.key, gameMode: args.gameMode));
-    }
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: GameScreen(
+          key: args.key,
+          gameMode: args.gameMode,
+        ),
+      );
+    },
+    StartRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StartScreen(),
+      );
+    },
   };
-
-  @override
-  List<RouteConfig> get routes => [
-        RouteConfig(StartRoute.name, path: '/'),
-        RouteConfig(GameRoute.name, path: '/game-screen')
-      ];
-}
-
-/// generated route for
-/// [StartScreen]
-class StartRoute extends PageRouteInfo<void> {
-  const StartRoute() : super(StartRoute.name, path: '/');
-
-  static const String name = 'StartRoute';
 }
 
 /// generated route for
 /// [GameScreen]
 class GameRoute extends PageRouteInfo<GameRouteArgs> {
-  GameRoute({Key? key, required GameMode gameMode})
-      : super(GameRoute.name,
-            path: '/game-screen',
-            args: GameRouteArgs(key: key, gameMode: gameMode));
+  GameRoute({
+    Key? key,
+    required GameMode gameMode,
+    List<PageRouteInfo>? children,
+  }) : super(
+          GameRoute.name,
+          args: GameRouteArgs(
+            key: key,
+            gameMode: gameMode,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'GameRoute';
+
+  static const PageInfo<GameRouteArgs> page = PageInfo<GameRouteArgs>(name);
 }
 
 class GameRouteArgs {
-  const GameRouteArgs({this.key, required this.gameMode});
+  const GameRouteArgs({
+    this.key,
+    required this.gameMode,
+  });
 
   final Key? key;
 
@@ -66,4 +69,18 @@ class GameRouteArgs {
   String toString() {
     return 'GameRouteArgs{key: $key, gameMode: $gameMode}';
   }
+}
+
+/// generated route for
+/// [StartScreen]
+class StartRoute extends PageRouteInfo<void> {
+  const StartRoute({List<PageRouteInfo>? children})
+      : super(
+          StartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StartRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

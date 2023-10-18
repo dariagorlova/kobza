@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kobza/core/service/navigator.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/features/game/model/game_mode.dart';
 import 'package:kobza/localization/localization.dart';
-//import 'package:kobza/routes/app_router.dart';
 
+@RoutePage()
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
@@ -12,7 +13,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -42,7 +43,7 @@ class StartScreen extends StatelessWidget {
                   },
                   child: Text(
                     t.everyDayWordButtonTitle,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Colors.white,
                         ),
                   ),
@@ -58,7 +59,7 @@ class StartScreen extends StatelessWidget {
                   },
                   child: Text(
                     t.randomWordButtonTitle,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Colors.white,
                         ),
                   ),
@@ -87,7 +88,7 @@ class ColoredBoxGreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Text(
               text,
-              style: Theme.of(context).textTheme.headline3!.copyWith(
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
                     color: Colors.white,
                   ),
             ),

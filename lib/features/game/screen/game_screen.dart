@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kobza/di/injection.dart';
@@ -9,6 +10,7 @@ import 'package:kobza/features/game/screen/widgets/one_attempt.dart';
 import 'package:kobza/features/game/screen/widgets/virtual_keyboard.dart';
 import 'package:kobza/localization/localization.dart';
 
+@RoutePage()
 class GameScreen extends StatelessWidget {
   const GameScreen({
     super.key,
@@ -37,10 +39,9 @@ class _GameScreenState extends State<_GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: BlocListener<GameCubit, GameState>(
-        listenWhen: (previous, current) =>
-            !previous.wrongWordDialog && current.wrongWordDialog,
+        listenWhen: (previous, current) => !previous.wrongWordDialog && current.wrongWordDialog,
         listener: (context, state) {
           final t = AppLocalizations.of(context);
           showAlertDialog(
@@ -50,8 +51,7 @@ class _GameScreenState extends State<_GameScreen> {
           );
         },
         child: BlocListener<GameCubit, GameState>(
-          listenWhen: (previous, current) =>
-              !previous.playerWon && current.playerWon,
+          listenWhen: (previous, current) => !previous.playerWon && current.playerWon,
           listener: (context, state) async {
             final t = AppLocalizations.of(context);
             await showAlertDialog(
@@ -64,8 +64,7 @@ class _GameScreenState extends State<_GameScreen> {
             }
           },
           child: BlocListener<GameCubit, GameState>(
-            listenWhen: (previous, current) =>
-                !previous.playerLost && current.playerLost,
+            listenWhen: (previous, current) => !previous.playerLost && current.playerLost,
             listener: (context, state) async {
               final t = AppLocalizations.of(context);
               await showAlertDialog(

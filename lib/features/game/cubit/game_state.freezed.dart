@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'game_state.dart';
 
@@ -32,7 +32,8 @@ mixin _$GameState {
 /// @nodoc
 abstract class $GameStateCopyWith<$Res> {
   factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) =
-      _$GameStateCopyWithImpl<$Res>;
+      _$GameStateCopyWithImpl<$Res, GameState>;
+  @useResult
   $Res call(
       {String hiddenWord,
       List<List<OneLetter>> answers,
@@ -44,62 +45,67 @@ abstract class $GameStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
+class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
+    implements $GameStateCopyWith<$Res> {
   _$GameStateCopyWithImpl(this._value, this._then);
 
-  final GameState _value;
   // ignore: unused_field
-  final $Res Function(GameState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hiddenWord = freezed,
-    Object? answers = freezed,
-    Object? keyboard = freezed,
-    Object? attempt = freezed,
-    Object? playerWon = freezed,
-    Object? playerLost = freezed,
-    Object? wrongWordDialog = freezed,
+    Object? hiddenWord = null,
+    Object? answers = null,
+    Object? keyboard = null,
+    Object? attempt = null,
+    Object? playerWon = null,
+    Object? playerLost = null,
+    Object? wrongWordDialog = null,
   }) {
     return _then(_value.copyWith(
-      hiddenWord: hiddenWord == freezed
+      hiddenWord: null == hiddenWord
           ? _value.hiddenWord
           : hiddenWord // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
+      answers: null == answers
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<List<OneLetter>>,
-      keyboard: keyboard == freezed
+      keyboard: null == keyboard
           ? _value.keyboard
           : keyboard // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      attempt: attempt == freezed
+      attempt: null == attempt
           ? _value.attempt
           : attempt // ignore: cast_nullable_to_non_nullable
               as int,
-      playerWon: playerWon == freezed
+      playerWon: null == playerWon
           ? _value.playerWon
           : playerWon // ignore: cast_nullable_to_non_nullable
               as bool,
-      playerLost: playerLost == freezed
+      playerLost: null == playerLost
           ? _value.playerLost
           : playerLost // ignore: cast_nullable_to_non_nullable
               as bool,
-      wrongWordDialog: wrongWordDialog == freezed
+      wrongWordDialog: null == wrongWordDialog
           ? _value.wrongWordDialog
           : wrongWordDialog // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
-  factory _$$_GameStateCopyWith(
-          _$_GameState value, $Res Function(_$_GameState) then) =
-      __$$_GameStateCopyWithImpl<$Res>;
+abstract class _$$GameStateImplCopyWith<$Res>
+    implements $GameStateCopyWith<$Res> {
+  factory _$$GameStateImplCopyWith(
+          _$GameStateImpl value, $Res Function(_$GameStateImpl) then) =
+      __$$GameStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String hiddenWord,
       List<List<OneLetter>> answers,
@@ -111,51 +117,50 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
-    implements _$$_GameStateCopyWith<$Res> {
-  __$$_GameStateCopyWithImpl(
-      _$_GameState _value, $Res Function(_$_GameState) _then)
-      : super(_value, (v) => _then(v as _$_GameState));
+class __$$GameStateImplCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateImpl>
+    implements _$$GameStateImplCopyWith<$Res> {
+  __$$GameStateImplCopyWithImpl(
+      _$GameStateImpl _value, $Res Function(_$GameStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_GameState get _value => super._value as _$_GameState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hiddenWord = freezed,
-    Object? answers = freezed,
-    Object? keyboard = freezed,
-    Object? attempt = freezed,
-    Object? playerWon = freezed,
-    Object? playerLost = freezed,
-    Object? wrongWordDialog = freezed,
+    Object? hiddenWord = null,
+    Object? answers = null,
+    Object? keyboard = null,
+    Object? attempt = null,
+    Object? playerWon = null,
+    Object? playerLost = null,
+    Object? wrongWordDialog = null,
   }) {
-    return _then(_$_GameState(
-      hiddenWord: hiddenWord == freezed
+    return _then(_$GameStateImpl(
+      hiddenWord: null == hiddenWord
           ? _value.hiddenWord
           : hiddenWord // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
+      answers: null == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<List<OneLetter>>,
-      keyboard: keyboard == freezed
+      keyboard: null == keyboard
           ? _value._keyboard
           : keyboard // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      attempt: attempt == freezed
+      attempt: null == attempt
           ? _value.attempt
           : attempt // ignore: cast_nullable_to_non_nullable
               as int,
-      playerWon: playerWon == freezed
+      playerWon: null == playerWon
           ? _value.playerWon
           : playerWon // ignore: cast_nullable_to_non_nullable
               as bool,
-      playerLost: playerLost == freezed
+      playerLost: null == playerLost
           ? _value.playerLost
           : playerLost // ignore: cast_nullable_to_non_nullable
               as bool,
-      wrongWordDialog: wrongWordDialog == freezed
+      wrongWordDialog: null == wrongWordDialog
           ? _value.wrongWordDialog
           : wrongWordDialog // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -165,8 +170,8 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GameState implements _GameState {
-  const _$_GameState(
+class _$GameStateImpl implements _GameState {
+  const _$GameStateImpl(
       {required this.hiddenWord,
       required final List<List<OneLetter>> answers,
       required final List<List<String>> keyboard,
@@ -182,6 +187,7 @@ class _$_GameState implements _GameState {
   final List<List<OneLetter>> _answers;
   @override
   List<List<OneLetter>> get answers {
+    if (_answers is EqualUnmodifiableListView) return _answers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answers);
   }
@@ -189,6 +195,7 @@ class _$_GameState implements _GameState {
   final List<List<String>> _keyboard;
   @override
   List<List<String>> get keyboard {
+    if (_keyboard is EqualUnmodifiableListView) return _keyboard;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_keyboard);
   }
@@ -215,34 +222,36 @@ class _$_GameState implements _GameState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GameState &&
-            const DeepCollectionEquality()
-                .equals(other.hiddenWord, hiddenWord) &&
+            other is _$GameStateImpl &&
+            (identical(other.hiddenWord, hiddenWord) ||
+                other.hiddenWord == hiddenWord) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
             const DeepCollectionEquality().equals(other._keyboard, _keyboard) &&
-            const DeepCollectionEquality().equals(other.attempt, attempt) &&
-            const DeepCollectionEquality().equals(other.playerWon, playerWon) &&
-            const DeepCollectionEquality()
-                .equals(other.playerLost, playerLost) &&
-            const DeepCollectionEquality()
-                .equals(other.wrongWordDialog, wrongWordDialog));
+            (identical(other.attempt, attempt) || other.attempt == attempt) &&
+            (identical(other.playerWon, playerWon) ||
+                other.playerWon == playerWon) &&
+            (identical(other.playerLost, playerLost) ||
+                other.playerLost == playerLost) &&
+            (identical(other.wrongWordDialog, wrongWordDialog) ||
+                other.wrongWordDialog == wrongWordDialog));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(hiddenWord),
+      hiddenWord,
       const DeepCollectionEquality().hash(_answers),
       const DeepCollectionEquality().hash(_keyboard),
-      const DeepCollectionEquality().hash(attempt),
-      const DeepCollectionEquality().hash(playerWon),
-      const DeepCollectionEquality().hash(playerLost),
-      const DeepCollectionEquality().hash(wrongWordDialog));
+      attempt,
+      playerWon,
+      playerLost,
+      wrongWordDialog);
 
   @JsonKey(ignore: true)
   @override
-  _$$_GameStateCopyWith<_$_GameState> get copyWith =>
-      __$$_GameStateCopyWithImpl<_$_GameState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
+      __$$GameStateImplCopyWithImpl<_$GameStateImpl>(this, _$identity);
 }
 
 abstract class _GameState implements GameState {
@@ -253,24 +262,24 @@ abstract class _GameState implements GameState {
       final int attempt,
       final bool playerWon,
       final bool playerLost,
-      final bool wrongWordDialog}) = _$_GameState;
+      final bool wrongWordDialog}) = _$GameStateImpl;
 
   @override
-  String get hiddenWord => throw _privateConstructorUsedError;
+  String get hiddenWord;
   @override
-  List<List<OneLetter>> get answers => throw _privateConstructorUsedError;
+  List<List<OneLetter>> get answers;
   @override
-  List<List<String>> get keyboard => throw _privateConstructorUsedError;
+  List<List<String>> get keyboard;
   @override
-  int get attempt => throw _privateConstructorUsedError;
+  int get attempt;
   @override
-  bool get playerWon => throw _privateConstructorUsedError;
+  bool get playerWon;
   @override
-  bool get playerLost => throw _privateConstructorUsedError;
+  bool get playerLost;
   @override
-  bool get wrongWordDialog => throw _privateConstructorUsedError;
+  bool get wrongWordDialog;
   @override
   @JsonKey(ignore: true)
-  _$$_GameStateCopyWith<_$_GameState> get copyWith =>
+  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

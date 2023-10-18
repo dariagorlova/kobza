@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kobza/di/injection.dart';
 import 'package:kobza/localization/localization.dart';
 import 'package:kobza/routes/app_router.dart';
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     getIt.pushNewScope();
-    configureInjection();
+    configureDependencies(env: Environment.prod);
   }
 
   @override
@@ -47,14 +48,16 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xff008F7C),
-        primarySwatch: Colors.lightGreen,
-        backgroundColor: const Color(0xffD4ED8C),
-        canvasColor: const Color(0xffF8FBEA), // initial
-        errorColor: const Color(0xffC5CA67), // wrong
+        canvasColor: const Color(0xffF8FBEA), // wrong
         splashColor: const Color(0xffC4A54F), // maybe
         focusColor: const Color(0xff3BA354), // correctly
         cardColor: Colors.white,
         dividerColor: Colors.black,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.lightGreen,
+        ).copyWith(background: const Color(0xffD4ED8C)).copyWith(
+              error: const Color(0xffC5CA67),
+            ),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,

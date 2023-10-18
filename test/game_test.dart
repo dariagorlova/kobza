@@ -16,12 +16,12 @@ import './step/i_enter_word_times.dart';
 import './step/i_dont_see_letter_marked_at_unguessed.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'daily');
-    await iWaitSecond(tester, 1);
-  }
   group('''Game''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'daily');
+      await iWaitSecond(tester, 1);
+    }
     testWidgets('''User tap K key''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'К');

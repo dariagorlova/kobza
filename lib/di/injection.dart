@@ -4,7 +4,11 @@ import 'package:kobza/di/injection.config.dart';
 
 final GetIt getIt = GetIt.instance;
 
-@injectableInit
-GetIt configureInjection() {
-  return $initGetIt(getIt);
-}
+@InjectableInit(
+  initializerName: 'init',
+  preferRelativeImports: true,
+  asExtension: true,
+)
+void configureDependencies({String? env}) => getIt.init(
+      environment: env,
+    );
