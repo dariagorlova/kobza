@@ -58,6 +58,16 @@ class _MyAppState extends State<MyApp> {
         ).copyWith(background: const Color(0xffD4ED8C)).copyWith(
               error: const Color(0xffC5CA67),
             ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.lightGreen,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            textStyle: const TextStyle(color: Colors.black, fontSize: 20),
+          ),
+        ),
+        textTheme: Theme.of(context).textTheme.copyWith(
+              titleLarge: const TextStyle(fontSize: 18, color: Colors.black),
+            ),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
