@@ -12,7 +12,10 @@ Future<void> showAlertDialog(BuildContext context, String title, String body) {
         content: Text(body),
         actions: [
           ElevatedButton(
-            child: Text(t.okButtonTitle),
+            child: Text(
+              t.okButtonTitle,
+              style: const TextStyle(color: Colors.black),
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },
