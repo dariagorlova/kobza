@@ -1,5 +1,7 @@
 # VERBA
 
+![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/sample.png)
+
 An analogue of the popular game Wordle. Ukrainian version.
 
 ## Rules of the game
@@ -17,12 +19,6 @@ Guessing letters are indicated in olive color.
 There are two options for choosing the word: daily ("daily" button) or any ("random" button).
 
 Daily word is one word  for everyone. But you can play all day, choosing the option "random" and the word will be different each time.
-
-![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/kobza.png)
-
-
-
-
 
 
 # ВЕРБА
@@ -44,5 +40,3 @@ Daily word is one word  for everyone. But you can play all day, choosing the opt
 Є два варіанта вибору слова: щоденне (кнопка "щодня") або будь-яке (кнопка "абищо"). 
 
 Щоденне слово одне кожного дня для усіх. Але можно цілий день грати, обираючи варіант "абищо" і слово кожного разу буде інше.
-
-![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/kobza.png)
