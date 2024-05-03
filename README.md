@@ -1,8 +1,8 @@
 # VERBA
 
-![](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/sample.png)
+<img src="https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/sample.png" width="300">
 
-An analogue of the popular game Wordle. Ukrainian version.
+An analog of the popular game Wordle. Ukrainian version.
 
 ## Rules of the game
 
@@ -11,7 +11,7 @@ You need to guess the word.
 You have 6 attempts.
 After each attempt, the colors of the sections will change to show how close you were.
 If the letter is in the word and is in the right place, it will be green.
-If the letter is in the intended word, but is not in the right place, it will be light brown.
+If the letter is in the intended word but is not in the right place, it will be light brown.
 Guessing letters are indicated in olive color.
 
 ## The beginning of the game
