@@ -1,6 +1,6 @@
 # VERBA
 
-![Screenshots](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/sample.png#200x100)
+![Screenshots](https://raw.githubusercontent.com/dariagorlova/kobza/master/doc/sample.png#300x200)
 
 An analog of the popular game Wordle. Ukrainian version.
 
